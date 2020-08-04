@@ -2,13 +2,13 @@
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-photos-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Collections
+                Shop Now
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-photos-link">
                 <a href="" class="dropdown-item">By Price</a>
                 <a href="" class="dropdown-item ">By Rating</a>
                 <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">All Photos</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Photos</a>
             </div>
         </li>
 
@@ -21,17 +21,6 @@
                 <a href="" class="dropdown-item">Product Photography</a>
                 <a href="" class="dropdown-item">Weddings</a>
                 <a href="" class="dropdown-item">Events</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="equipment-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Equipment
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="equipment-link">
-                <a href="" class="dropdown-item">Cameras</a>
-                <a href="" class="dropdown-item">Lighting</a>
-                <a href="" class="dropdown-item">The Full Setup</a>
             </div>
         </li>
 
