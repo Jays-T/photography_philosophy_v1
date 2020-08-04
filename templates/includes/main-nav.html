@@ -17,10 +17,13 @@
                 Services
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="services-link">
-                <a href="" class="dropdown-item">Portraits</a>
-                <a href="" class="dropdown-item">Product Photography</a>
-                <a href="" class="dropdown-item">Weddings</a>
-                <a href="" class="dropdown-item">Events</a>
+                <a href="{% url 'products' %}?category=portraits" class="dropdown-item">Portraits</a>
+                <a href="{% url 'products' %}?category=product_photography" class="dropdown-item">Product Photography</a>
+                <a href="{% url 'products' %}?category=food_photography" class="dropdown-item">Food Photography</a>
+                <a href="{% url 'products' %}?category=landscapes" class="dropdown-item">Landscapes</a>
+                <a href="{% url 'products' %}?category=architecture" class="dropdown-item">Architecture</a>
+                <a href="{% url 'products' %}?category=weddings" class="dropdown-item">Weddings</a>
+                <a href="{% url 'products' %}?category=corporate_events" class="dropdown-item">Events</a>
             </div>
         </li>
 
