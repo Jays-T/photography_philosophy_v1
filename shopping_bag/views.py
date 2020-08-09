@@ -12,13 +12,12 @@ def add_to_bag(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    shopping_bag = request.session.get('shopping_bag', {})
+    bag = request.session.get('bag', {})
 
-    if item_id in list(shopping_bag.keys()):
-        shopping_bag[item_id] += quantity
+    if item_id in list(bag.keys()):
+        bag[item_id] += quantity
     else:
-        shopping_bag[item_id] = quantity
+        bag[item_id] = quantity
 
-    request.session['shopping_bag'] = shopping_bag
-    print(request.session['shopping_bag'])
+    request.session['bag'] = bag
     return redirect(redirect_url)
