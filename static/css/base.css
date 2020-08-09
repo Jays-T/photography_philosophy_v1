@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/landskrona_citadel.jpg') no-repeat center center fixed;
+    background: url('/media/portrait_philz_1021x679.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -70,13 +70,17 @@ body {
     background: #000 !important;
 }
 
+.bg-transparent {
+    background: rgba(24, 23, 23, 0.2) !important;
+}
+
 .overlay {
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     position: fixed;
-    background: white;
+    background: rgba(24, 23, 23, 0.6);
     z-index: -1;
 }
 
