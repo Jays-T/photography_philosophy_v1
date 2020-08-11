@@ -89,6 +89,11 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
+a.update-link:hover, a.remove-item:hover {
+    text-decoration: underline;
+
+}
+
 .scroll-up-button {
     height: 42px;
     width: 42px;
@@ -97,7 +102,9 @@ a.category-badge > span.badge:hover {
     right: 10px;
 }
 
-.scroll-up-link {
+.scroll-up-link,
+.update-link,
+.remove-item {
     cursor: pointer;
 }
 
