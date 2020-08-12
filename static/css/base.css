@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/portrait_philz_1021x679.jpg') no-repeat center center fixed;
+    background: url('/media/portrait_lanthus_clark_1600x1087.png') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -25,6 +25,10 @@ body {
 
 .main-logo-link {
     width: fit-content;
+}
+
+.margin-left {
+    margin-left: 36rem;
 }
 
 .portfolio-button {
@@ -66,12 +70,16 @@ body {
     border: 1px solid black !important;
 }
 
+.rounded-border {
+    border-radius: 5px !important;
+}
+
 .bg-black {
     background: #000 !important;
 }
 
 .bg-transparent {
-    background: rgba(24, 23, 23, 0.2) !important;
+    background: rgba(24, 23, 23, 0.6) !important;
 }
 
 .overlay {
@@ -80,7 +88,7 @@ body {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgba(14, 13, 13, 0.8);
+    background: rgba(14, 13, 13, 0.5);
     z-index: -1;
 }
 
@@ -128,14 +136,14 @@ a.update-link:hover, a.remove-item:hover {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 72px;
     }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 26px;
+        padding-top: 0px;
     }
 
     body {
