@@ -114,9 +114,9 @@
                         <label class="form-check-label text-off-white" for="save-shipping-info">Save this shipping address to my profile</label>
                         <input class="form-check-input ml-2 mr-0" id="save-shipping-info" type="checkbox" name="save-shipping-info" checked>
                     {% else %}
-                        <label class="form-check-label" for="save-shipping-info">
-                            <a class="text-info text-off-white" href="{% url 'account_signup' %}">Create an account</a> or
-                            <a class="text-info text-off-white" href="{% url 'account_login' %}">Login</a> to save this information
+                        <label class="form-check-label text-off-white" for="save-shipping-info">
+                            <a class="text-info bg-white rounded-border text-muted p-2" href="{% url 'account_signup' %}">Create an account</a> or
+                            <a class="text-info bg-white rounded-border text-muted p-2" href="{% url 'account_login' %}">Login</a> to save this information
                         </label>
                     {% endif %}
                 </div>
@@ -158,4 +158,11 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %} 
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
