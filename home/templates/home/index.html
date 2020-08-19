@@ -1,13 +1,18 @@
 {% extends "base.html" %} 
 
-{% load static %} {% block page_header %}
+{% load static %} 
+
+{% block page_header %}
 <div class="header-container">
+
   <div class="row bg-transparent d-block d-sm-none">
-    <div class="col">{% include 'includes/mobile-top-header.html' %}</div>
+    <div class="col"></div>
   </div>
 </div>
-{% endblock %} {% block content %}
-<div class="container h-100 d-none d-md-block d-lg-block d-xl-block">
+{% endblock %} 
+
+{% block content %}
+<div class="container h-100 hidden-sm-down">
   <div class="row h-100">
     <div class="col-7 col-md-12 my-auto">
       <h1 class="logo-font text-black my-0"><strong>Lanthus</strong>Clark</h1>
@@ -16,7 +21,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
                 {% include 'includes/main-nav.html' %}
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item">
