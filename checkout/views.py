@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
+from .models import OrderLineItem
+from products.models import Product
 from shopping_bag.contexts import bag_contents
 
 import stripe
@@ -16,17 +18,53 @@ def checkout(request):
         bag = request.session.get('bag', {})
 
         form_data = {
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
-            '': request.POST[''],
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
         }
-        order_form = OrderForm (form_data)
+        order_form = OrderForm(form_data)
+        if order_form.is_valid:
+            order = order_form.save()
+            for item_id, item_data in bag.items():
+                try:
+                    product = Product.objects.get(id=item_id)
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                    else:
+                        for size, quantity in item_data['items_by_size'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                quantity=item_data,
+                                product_size=size,
+                            )
+                            order_line_item.save()
+                except Product.DoesNotExist:
+                    messages.error(request, (
+                        "Ooops, one of the items in your shopping \
+                        bag was not found in our database. "
+                        "Please contact us for assistance!")
+                    )
+                    order.delete()
+                    return redirect(reverse, ('view_bag'))
+
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', args=[order.order_number]))
+        else:
+            messages.error(request, "There was an error with the form you submitted. \
+                Please double check your information before trying again.")
+
     else:
         bag = request.session.get('bag', {})
         if not bag:
