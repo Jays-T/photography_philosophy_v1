@@ -21,7 +21,7 @@ class OrderAdmin(admin.ModelAdmin):
               'county', 'delivery_cost',
               'order_total', 'grand_total',)
 
-    list_items = ('order_number', 'date',
+    list_display = ('order_number', 'date',
                   'full_name', 'delivery_cost',
                   'order_total', 'grand_total',)
 
