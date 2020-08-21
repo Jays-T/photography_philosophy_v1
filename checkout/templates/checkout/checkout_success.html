@@ -35,20 +35,20 @@
 <div class="overlay"></div>
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col" id="thank-you">
       <hr />
       <h2 class="logo-font mb-4 text-off-white">Thank You</h2>
       <hr />
-      <p class="text-off-white">Hope to see you again soon! An order confirmation will be sent to {{ order.email }}. Your order information is below.</p>
+      <p class="text-off-white"><span class="bg-transparent p-1 rounded-border">Hope to see you again soon! An order confirmation will be sent to {{ order.email }}. Your order information is below.<span></p>
     </div>
   </div>
 <!--Order summary-->
-  <div class="row">
+  <div class="row" id="order-summary">
     <div class="col-12 col-lg-7">
         <div class="order-confirmed p-2 rounded-border bg-white">
             <div class="row">
                 <div class="col">
-                    <small class="bg-transparent p-1 rounded-border text-off-white">Order Info</small>
+                    <small class="bg-transparent p-1 rounded-border text-off-white">Order Summary</small>
                 </div>
             </div>
             <hr class="my-0 mt-1 mb-1">

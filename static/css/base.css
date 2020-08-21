@@ -130,7 +130,7 @@ body {
 }
 
 .bg-transparent {
-    background: rgba(24, 23, 23, 0.6) !important;
+    background: rgba(15, 40, 48, 0.6) !important;
 }
 
 .overlay {
@@ -139,7 +139,7 @@ body {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgba(14, 13, 13, 0.5);
+    background: rgba(22, 31, 31, 0.5);
     z-index: -1;
 }
 
