@@ -10,7 +10,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+    {% endblock %} 
+    
+    {% block extra_meta %} 
+    {% endblock %} 
+    
+    {% block corecss %}
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -23,7 +28,7 @@
     />
     <link href="{% static 'css/base.css' %}" rel="stylesheet" />
     {% endblock %} 
-
+    
     {% block extra_css %} 
     {% endblock %} 
     
@@ -59,136 +64,171 @@
 
   <body>
     <header class="container-fluid fixed-top">
-    {% if '/' == request.path %}
-    {% else %}
-      <div id="topnav" class="row {% if '/' == request.path %}bg-transparent{% else %}bg-white{% endif %} pt-lg-2 d-none d-lg-flex">
-        <div
-          class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"
-        >
-          <a href="{% url 'home' %}" class="nav-link main-logo-link">
-            <h2 class="logo-font text-black my-0">
-              <strong>Lanthus</strong>Clark
-            </h2>
-          </a>
-        </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <form method="GET" action="{% url 'products' %}">
-            <div class="input-group w-100">
-              <input
-                class="form-control border border-black rounded-1"
-                type="text"
-                name="q"
-                placeholder="Search the site"
-              />
-              <div class="input-group-append">
+      <div class="container {% if '/' == request.path %} top-padding {% else %} {% endif %}h-100">
+        <div class="row h-100">
+          <div class="col-7 col-md-12 my-auto">
+            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+              <h2 class="logo-font text-black my-0">
+                <strong>Lanthus</strong>Clark
+              </h2>
+            </a>
+            <div class="row bg-transparent rounded-border">
+              <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button
-                  class="form-control btn btn-black border border-black rounded-1"
-                  type="submit"
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#main-nav"
+                  aria-controls="main-nav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
                 >
-                  <span class="icon">
-                    <i class="fas fa-search"></i>
-                  </span>
+                  <span class="navbar-toggler-icon"></span>
                 </button>
-              </div>
+                {% include 'includes/main-nav.html' %}
+                <ul
+                  class="list-inline list-unstyled text-center text-lg-right my-0"
+                >
+                  <li class="list-inline-item">
+                    <a
+                      class="text-off-white nav-link"
+                      href="#"
+                      id="index-search"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="text-center">
+                        <div><i class="fas fa-search fa-lg"></i></div>
+                        <p class="my-0">Search</p>
+                      </div>
+                    </a>
+                    <div
+                      class="dropdown-menu border-0 w-50 p-3 rounded-1 margin-left"
+                      aria-labelledby="index-search"
+                    >
+                      <form
+                        class="form"
+                        method="GET"
+                        action="{% url 'products' %}"
+                      >
+                        <div class="input-group w-100">
+                          <input
+                            class="form-control border border-black rounded-1"
+                            type="text"
+                            name="q"
+                            placeholder="Search our site"
+                          />
+                          <div class="input-group-append">
+                            <button
+                              class="form-control form-control btn btn-black border border-black rounded-1"
+                              type="submit"
+                            >
+                              <span class="icon">
+                                <i class="fas fa-search"></i>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+                  <li class="list-inline-item dropdown">
+                    <a
+                      class="text-off-white nav-link"
+                      href="#"
+                      id="user-options"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="text-center">
+                        <div><i class="fas fa-user fa-lg"></i></div>
+                        <p class="my-0">My Account</p>
+                      </div>
+                    </a>
+                    <div
+                      class="dropdown-menu border-0"
+                      aria-labelledby="user-options"
+                    >
+                      {% if request.user.is_authenticated %} 
+                      {% if request.user.is_superuser %}
+                      <a href="" class="dropdown-item">Product Management</a>
+                      {% endif %}
+                      <a href="" class="dropdown-item">My Profile</a>
+                      <a href="{% url 'account_logout' %}" class="dropdown-item"
+                        >Logout</a
+                      >
+                      {% else %}
+                      <a href="{% url 'account_signup' %}" class="dropdown-item"
+                        >Register</a
+                      >
+                      <a href="{% url 'account_login' %}" class="dropdown-item"
+                        >Login</a
+                      >
+                      {% endif %}
+                    </div>
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="{% if grand_total %}text-info font-weight-bold{% else %}text-off-white{% endif %} nav-link"
+                      href="{% url 'view_bag' %}"
+                    >
+                      <div class="text-center">
+                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                        <p class="my-0">
+                          {% if grand_total %} 
+                          ${{ grand_total|floatformat:2 }}
+                          {% else %} 
+                          $0.00 
+                          {% endif %}
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </form>
-        </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-            <li class="list-inline-item dropdown">
-              <a
-                class="text-black nav-link"
-                href="#"
-                id="user-options"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div class="text-center">
-                  <div><i class="fas fa-user fa-lg"></i></div>
-                  <p class="my-0">My Account</p>
-                </div>
-              </a>
-              <div
-                class="dropdown-menu border-0"
-                aria-labelledby="user-options"
-              >
-                {% if request.user.is_authenticated %} 
-                {% if request.user.is_superuser %}
-                <a href="" class="dropdown-item">Product Management</a>
-                {% endif %}
-                <a href="" class="dropdown-item">My Profile</a>
-                <a href="{% url 'account_logout' %}" class="dropdown-item"
-                  >Logout</a
-                >
-                {% else %}
-                <a href="{% url 'account_signup' %}" class="dropdown-item"
-                  >Register</a
-                >
-                <a href="{% url 'account_login' %}" class="dropdown-item"
-                  >Login</a
-                >
-                {% endif %}
-              </div>
-            </li>
-            <li class="list-inline-item">
-              <a
-                class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                href="{% url 'view_bag' %}"
-              >
-                <div class="text-center">
-                  <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                  <p class="my-0">
-                    {% if grand_total %} ${{ grand_total|floatformat:2 }} 
-                    {% else %} $0.00 {% endif %}
-                  </p>
-                </div>
-              </a>
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
-      <!-- <div id="delivery-banner" class="row text-center">
-        <div class="col bg-black text-white">
-          <h4 class="logo-font my-1">
-            Free delivery on orders over ${{ free_shipping_threshold }}!
-          </h4>
-        </div>
-      </div> -->
-      {% endif %}
-      
     </header>
 
+    
     {% if messages %}
     <div class="message-container">
-    <strong>
-        {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 20 %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% endif %}
-            {% endwith %}
+      <strong>
+        {% for message in messages %} 
+        {% with message.level as level %} 
+        
+        {% if level == 40 %} {% include 'includes/toasts/toast_error.html' %} 
+        
+        {% elif level == 30 %} {% include 'includes/toasts/toast_warning.html' %} 
+        {% elif level == 20 %} {% include 'includes/toasts/toast_info.html' %} 
+        {% else %} {% include 'includes/toasts/toast_success.html' %} 
+        
+        {% endif %}
+        {% endwith %} 
         {% endfor %}
-        </strong>
+      </strong>
     </div>
     {% endif %} 
 
     {% block page_header %} 
     {% endblock %} 
-    
+    <div  id="swup" class="container-fluid top-margin transition-fade">
     {% block content %} 
-    {% endblock %} 
+    {%endblock %}
+    </div>
     
-    {% block postloadjs %} 
+    {% block postloadjs %}
+    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
     <script type="text/javascript">
-        $('.toast').toast('show');
+        const swup = new Swup();
+      $(".toast").toast("show");
     </script>
+    
     {% endblock %}
+    
   </body>
 </html>

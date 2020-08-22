@@ -5,11 +5,22 @@ html {
 body {
     background: url('/media/portrait_lanthus_clark_1600x1087.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: calc(100vh - 184px);
     color: #555;
     font-family: 'Lato';
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+/* SWUP */
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
@@ -147,6 +158,14 @@ body {
     position: fixed;
     background: rgba(22, 31, 31, 0.5);
     z-index: -1;
+}
+
+.top-margin {
+    margin-top: 104px;
+}
+
+.top-padding {
+    padding-top: 54vh;
 }
 
 a.category-badge > span.badge:hover {
