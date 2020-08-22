@@ -1,7 +1,7 @@
 /* Core of the code here was taken from
 https://stripe.com/docs/payments/accept-a-payment
 
-With 
+With elements adapted from Code Institute Boutique Ado Project
 
 CSS from:
 https://stripe.com/docs/stripe-js
@@ -33,7 +33,6 @@ card.mount("#card-element");
 
 // Handle validation errors
 const errorDiv = document.getElementById("card-errors");
-let form = document.getElementById("payment-form");
 
 card.addEventListener("change", function (event) {
   if (event.error) {
@@ -51,28 +50,30 @@ card.addEventListener("change", function (event) {
 
 // Handle form submission (adapted from stripe documentation)
 
-var form = document.getElementById("payment-form");
+let form = document.getElementById("payment-form");
 
 form.addEventListener("submit", function (ev) {
+  // On submit prevent form submission
   ev.preventDefault();
   card.update({ disabled: true });
   $("#submit-button").attr("disabled", true);
   $("#payment-form").fadeToggle(100);
 
+  // Capture form data
   var saveInfo = Boolean($("#id-save-info").attr("checked"));
-  // From using {% csrf_token %} in the form
   var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
   var postData = {
     csrfmiddlewaretoken: csrfToken,
     client_secret: clientSecret,
     save_info: saveInfo,
   };
-  var url = "/checkout/cache_checkout_data/";
+  var url = "/checkout/checkout_data_cache/";
 
+  // Post data to checkout_data_cache view 
   $.post(url, postData)
     .done(function () {
-      stripe
-        .confirmCardPayment(clientSecret, {
+      // On 200 response call stripe confirm card payment method
+      stripe.confirmCardPayment(clientSecret, {
           payment_method: {
             card: card,
             billing_details: {
@@ -100,9 +101,9 @@ form.addEventListener("submit", function (ev) {
               state: $.trim(form.county.value),
             },
           },
-        })
-        .then(function (result) {
+        }).then(function (result) {
           if (result.error) {
+            // If error in form display error message and return user to form 
             var html = `
             <span class="icon" role="alert">
                 <i class="fas fa-times"></i>
@@ -114,17 +115,15 @@ form.addEventListener("submit", function (ev) {
             card.update({ disabled: false });
             $("#submit-button").attr("disabled", false);
           } else {
-            // The payment has been processed!
+            // If all is successful submit the form data with payment intent to stripe
             if (result.paymentIntent.status === "succeeded") {
               form.submit();
-              // Show a success message to your customer
-              
             }
           }
         });
-    })
-    .fail(function () {
-      // just reload the page, the error will be in django messages
+    }).fail(function () {
+      // If data not posted to view correctly reload page with error message,
+      // User not charged and order not processed
       location.reload();
     });
 });
