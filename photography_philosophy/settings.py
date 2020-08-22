@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'shopping_bag',
     'checkout',
     'crispy_forms',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
@@ -169,7 +170,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Stripe variables
-FREE_SHIPPING_THRESHOLD = 50
+FREE_SHIPPING_THRESHOLD = 75
 STANDARD_SHIPPING_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
