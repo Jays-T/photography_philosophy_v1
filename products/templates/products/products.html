@@ -15,13 +15,13 @@
                 {% if current_categories %}
                 {% for c in current_categories %}
                     <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 border border-light">{{ c.friendly_name }}</span>
+                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
                     </a>
                 {% endfor %}
                 {% else %}
                 {% for category in all_category %}
                 <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 border border-light">{{ category.friendly_name }}</span>
+                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
                     </a>
                 {% endfor %}
                 {% endif %}
