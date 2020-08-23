@@ -64,7 +64,7 @@
 
   <body>
     <header class="container-fluid fixed-top">
-      <div class="container{% if '/' == request.path %} top-padding {% else %}{% endif %}h-100">
+      <div class="{% if '/' == request.path %}container top-padding-index-navbar {% else %} {% endif %}h-100">
         <div class="row h-100">
           <div class="col-12 my-auto">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -92,19 +92,6 @@
                     <i class="fas fa-bars"></i>
                    </button>
                    
-                  </li>
-                  <li id="mobile-portfolio-nav-link" class="list-inline-item">
-                    <a
-                      class="text-off-white nav-link"
-                      href="{% url 'products' %}"
-                    >
-                      <div class="text-center">
-                        <div><i class="fas fa-camera-retro fa-lg"></i></div>
-                        <p class="my-0">
-                          Portfolio
-                        </p>
-                      </div>
-                    </a>
                   </li>
                   <li class="list-inline-item">
                     <a
@@ -237,7 +224,20 @@
     {% block content %} 
     {%endblock %}
     </div>
-    
+    {% if '/' == request.path %}
+    {% else %}
+    <footer class="container-fluid footer">
+            <div class="row">
+                <div class="col-12 bg-transparent rounded-top">
+                    <div class="row">
+                        <div class="col-4 text-off-white text-left"><p>(c)Lanthus Clark</p> </div>
+                        <div class="col-4 text-off-white text-center"><p>Site by Jays-T</p> </div>
+                        <div class="col-4 text-off-white text-right"><p>Wololo</p> </div>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    {% endif %}
     {% block postloadjs %}
     <script type="text/javascript">
       $(".toast").toast("show");

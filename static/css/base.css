@@ -146,10 +146,10 @@ body {
 }
 
 .top-margin {
-    margin-top: 104px;
+    margin-top: 15vh;
 }
 
-.top-padding {
+.top-padding-index-navbar {
     padding-top: 54vh;
 }
 
@@ -177,8 +177,10 @@ a.update-link:hover, a.remove-item:hover {
     cursor: pointer;
 }
 
-#mobile-portfolio-nav-link {
-    display: none;
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
 }
 
 /* ------------------------------- bootstrap toasts */
