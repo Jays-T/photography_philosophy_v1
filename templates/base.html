@@ -64,9 +64,9 @@
 
   <body>
     <header class="container-fluid fixed-top">
-      <div class="container {% if '/' == request.path %} top-padding {% else %} {% endif %}h-100">
+      <div class="container{% if '/' == request.path %} top-padding {% else %}{% endif %}h-100">
         <div class="row h-100">
-          <div class="col-7 col-md-12 my-auto">
+          <div class="col-12 my-auto">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
               <h2 class="logo-font text-black my-0">
                 <strong>Lanthus</strong>Clark
@@ -74,21 +74,38 @@
             </a>
             <div class="row bg-transparent rounded-border">
               <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#main-nav"
-                  aria-controls="main-nav"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span class="navbar-toggler-icon"></span>
-                </button>
+                
                 {% include 'includes/main-nav.html' %}
                 <ul
-                  class="list-inline list-unstyled text-center text-lg-right my-0"
-                >
+                  class="nav-ul list-inline list-unstyled text-center text-lg-right my-0"
+                > <li class="list-inline-item">
+                    
+                        <button
+                            class="navbar-toggler text-off-white"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#main-nav"
+                            aria-controls="main-nav"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                    <i class="fas fa-bars"></i>
+                   </button>
+                   
+                  </li>
+                  <li id="mobile-portfolio-nav-link" class="list-inline-item">
+                    <a
+                      class="text-off-white nav-link"
+                      href="{% url 'products' %}"
+                    >
+                      <div class="text-center">
+                        <div><i class="fas fa-camera-retro fa-lg"></i></div>
+                        <p class="my-0">
+                          Portfolio
+                        </p>
+                      </div>
+                    </a>
+                  </li>
                   <li class="list-inline-item">
                     <a
                       class="text-off-white nav-link"
@@ -104,7 +121,7 @@
                       </div>
                     </a>
                     <div
-                      class="dropdown-menu border-0 w-50 p-3 rounded-1 margin-left"
+                      class="dropdown-menu border-0 w-100 p-3 rounded-1 align-right"
                       aria-labelledby="index-search"
                     >
                       <form
@@ -216,15 +233,13 @@
 
     {% block page_header %} 
     {% endblock %} 
-    <div  id="swup" class="container-fluid top-margin transition-fade">
+    <div class="container-fluid top-margin">
     {% block content %} 
     {%endblock %}
     </div>
     
     {% block postloadjs %}
-    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
     <script type="text/javascript">
-        const swup = new Swup();
       $(".toast").toast("show");
     </script>
     

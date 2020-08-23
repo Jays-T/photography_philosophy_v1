@@ -116,13 +116,13 @@
 
 {% endblock %}
 
-<!-- Handels the sorting selector box functions -->
+<!-- Handles the sorting selector box functions -->
 {% block postloadjs %}
     {{ block.super }}
         <script type="text/javascript">
             $('.scroll-up-link').click(function(e) {
                 window.scrollTo(0,0)
-            })
+            });
         </script>
 
         <script type="text/javascript">
@@ -144,7 +144,7 @@
                 currentUrl.searchParams.delete("direction");
 
                 window.location.replace(currentUrl);
-            }
-        })
-    </script>
+                }
+            });
+        </script>
 {% endblock %}

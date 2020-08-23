@@ -12,17 +12,6 @@ body {
     overflow-y: auto;
 }
 
-/* SWUP */
-
-.transition-fade {
-  transition: 0.4s;
-  opacity: 1;
-}
-
-html.is-animating .transition-fade {
-  opacity: 0;
-}
-
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0; 
@@ -89,10 +78,6 @@ html.is-animating .transition-fade {
 
 .main-logo-link {
     width: fit-content;
-}
-
-.margin-left {
-    margin-left: 36rem;
 }
 
 .portfolio-button {
@@ -192,13 +177,29 @@ a.update-link:hover, a.remove-item:hover {
     cursor: pointer;
 }
 
+#mobile-portfolio-nav-link {
+    display: none;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
     position: fixed;
-    top: 72px;
-    right: 15px;
+    top: 122px;
+    right: 22px;
     z-index: 99999999999;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .custom-toast {
@@ -241,5 +242,14 @@ a.update-link:hover, a.remove-item:hover {
 
     body {
         height: calc(100vh - 116px);
+        font-size: 0.6em;
+    }
+
+    #mobile-portfolio-nav-link {
+    display: inline-block;
+    }
+
+    .navbar-toggler {
+        border: none !important;
     }
 }
