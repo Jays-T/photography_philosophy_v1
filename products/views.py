@@ -11,6 +11,7 @@ def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    all_category = Category.objects.all()
     query = None
     categories = None
     sort = None
@@ -54,6 +55,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'all_category': all_category,
     }
 
     return render(request, 'products/products.html', context)

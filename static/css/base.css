@@ -8,6 +8,7 @@ body {
     height: calc(100vh - 184px);
     color: #555;
     font-family: 'Lato';
+    letter-spacing: 0.08em;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -254,4 +255,8 @@ a.update-link:hover, a.remove-item:hover {
     .navbar-toggler {
         border: none !important;
     }
+
+    .overlay {
+    background: rgba(22, 31, 31, 0.8);
+}
 }
