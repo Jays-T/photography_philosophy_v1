@@ -64,17 +64,16 @@ body {
     border: 1px solid black;
 }
 
-.nav-item:hover,
-.nav-item:active,
-.nav-item:focus,
+li .dropdown-item:hover,
+.list-inline-item:hover,
+.category-badge > .badge:hover,
+.nav-item a:hover,
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus,
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    /* background: rgba(15, 40, 48, 0.6) !important; */
-    
     border-radius: 5px;
     animation-name: fadeInBgColor;
     animation-duration: 0.8s;
@@ -83,13 +82,20 @@ body {
 
 @keyframes fadeInBgColor {
     0% {
-        background: rgba(15, 40, 48, 0);
+        background: rgba(10, 32, 39, 0);
+        -webkit-box-shadow: 0px 0px 1px 0px rgba(215, 233, 250, 0);
+        -moz-box-shadow: 0px 0px 1px 0px rgba(250, 215, 235, 0);
+        box-shadow: 0px 0px 1px 0px rgba(250, 215, 235, 0);
     }
     100% {
-        background: rgba(15, 40, 48, 0.6);
+        background: rgba(10, 32, 39, 0.6);
         color: antiquewhite ;
+        -webkit-box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
+        -moz-box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
+        box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
     }
 }
+
 
 input:hover,
 input:active,
@@ -119,10 +125,6 @@ input:focus {
     border-radius: 5px !important;
 }
 
-/* .shadow {
-    box-shadow: .04em 0 1em rgb(102, 103, 112), -.04em 0 1em rgb(102, 103, 112);
-} */
-
 .bg-black {
     background: #000 !important;
 }
@@ -151,16 +153,6 @@ input:focus {
 
 .top-padding-index-navbar {
     padding-top: 54vh;
-}
-
-a.category-badge > span.badge:hover {
-    background: #212529 !important;
-    color: #fff !important;
-}
-
-a.update-link:hover, a.remove-item:hover {
-    text-decoration: underline;
-
 }
 
 .scroll-up-button {

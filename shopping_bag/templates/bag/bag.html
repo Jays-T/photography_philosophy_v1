@@ -90,8 +90,16 @@
                         </div>
                     </div>
                 </form>
-                <a class="update-link text-off-white"><small>Update</small></a>
-                <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                <a class="category-badge update-link text-off-white">
+                    <span class="p-2 badge text-off-white rounded-1"><i class="far fa-edit"></i> | Update
+                    </span>
+                </a>
+                <a class="category-badge remove-item text-danger float-right" 
+                   id="remove_{{ item.item_id }}" 
+                   data-product_size="{{ item.size }}">
+                   <span class="p-2 badge text-red rounded-1"><i class="far fa-trash-alt"></i> | Remove
+                   </span>
+                </a>
             </td>
             <td class="py-3">
               <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity}}</p>

@@ -8,7 +8,8 @@
             <div class="dropdown-menu border-0" aria-labelledby="all-photos-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
-                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
+                <hr class="my-0 mt-1 mb-1">
+                <span class="dropdown-item small">Categories</span>
                 <hr class="my-0 mt-1 mb-1">
                 <a href="{% url 'products' %}?category=abstract" class="dropdown-item">Abstract</a>
                 <a href="{% url 'products' %}?category=architecture" class="dropdown-item">Architecture</a>

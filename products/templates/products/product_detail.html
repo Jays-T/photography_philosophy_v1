@@ -13,7 +13,7 @@
                 
                 {% for category in all_category %}
                 <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
+                        <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
                     </a>
                 {% endfor %}
                 
