@@ -25,39 +25,6 @@ body {
     right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
-.arrow-primary {
-    border-bottom-color: #007bff !important;
-}
-
-.arrow-secondary {
-    border-bottom-color: #6c757d !important;
-}
-
-.arrow-success {
-    border-bottom-color: #28a745 !important;
-}
-
-.arrow-danger {
-    border-bottom-color: #dc3545 !important;
-}
-
-.arrow-warning {
-    border-bottom-color: #ffc107 !important;
-}
-
-.arrow-info {
-    border-bottom-color: #17a2b8 !important;
-}
-
-.arrow-light {
-    border-bottom-color: #f8f9fa !important;
-}
-
-.arrow-dark {
-    border-bottom-color: #343a40 !important;
-}
-
 .bag-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
@@ -136,6 +103,10 @@ body {
     background: rgba(15, 40, 48, 0.6) !important;
 }
 
+.bg-none {
+    background: none;
+}
+
 .overlay {
     height: 100%;
     width: 100%;
@@ -207,10 +178,6 @@ a.update-link:hover, a.remove-item:hover {
 
 .custom-toast {
     overflow: visible;
-}
-
-.toast-capper {
-    height: 2px;
 }
 
 /* -------------------------------- Media Queries */
