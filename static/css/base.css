@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/portrait_lanthus_clark_1600x1087.jpg') no-repeat center center fixed;
+    background: url('/media/portrait_lanthus_clark_1600x1087.png') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 184px);
     color: #555;
