@@ -60,7 +60,7 @@
               <p class="my-0">${{ item.product.price }}</p>
             </td>
             <td class="py-3 w-25">
-                <form class="form update-form" method="POST" action="{% url 'update_bag' item.item_id %}">
+                <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <div class="input-group">
@@ -100,7 +100,7 @@
           {% endfor %}
           <tr class="text-off-white">
             <td colspan="5" class="pt-5 text-right">
-              <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+              <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
               <h6>Shipping: ${{ shipping|floatformat:2 }}</h6>
               <h4 class="mt-4">
                 <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>

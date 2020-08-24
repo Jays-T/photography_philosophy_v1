@@ -4,14 +4,14 @@ from django.contrib import messages
 from products.models import Product
 
 
-def view_bag(request):
-    """ A view that renders the contents of the shopping bag page """
+def view_cart(request):
+    """ A view that renders the contents of the shopping cart page """
 
     return render(request, 'bag/bag.html')
 
 
-def add_to_bag(request, item_id):
-    """ Allow user to add specific quantity of the specified product to bag """
+def add_to_cart(request, item_id):
+    """ Allow user to add specific quantity of the specified product to cart """
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -28,23 +28,23 @@ def add_to_bag(request, item_id):
                 messages.success(request, f'Updated size {size.upper()} {product.name} amount to {bag[item_id]["items_by_size"][size]}')
             else:
                 bag[item_id]['items_by_size'][size] = quantity
-                messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+                messages.success(request, f'Added size {size.upper()} {product.name} to your cart')
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
-            messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+            messages.success(request, f'Added size {size.upper()} {product.name} to your cart')
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
             messages.success(request, f'Updated {product.name} amount to {bag[item_id]}')
         else:
             bag[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your bag')
+            messages.success(request, f'Added {product.name} to your cart')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
 
 
-def update_bag(request, item_id):
+def update_cart(request, item_id):
     """ Update the quantity of specified product to the specified amount """
 
     product = get_object_or_404(Product, pk=item_id)
@@ -62,21 +62,21 @@ def update_bag(request, item_id):
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
+            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
     else:
         if quantity > 0:
             bag[item_id] = quantity
             messages.success(request, f'Updated {product.name} amount to {bag[item_id]}')
         else:
             bag.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your bag')
+            messages.success(request, f'Removed {product.name} from your cart')
 
     request.session['bag'] = bag
-    return redirect(reverse('view_bag'))
+    return redirect(reverse('view_cart'))
 
 
-def remove_from_bag(request, item_id):
-    """ Remove the quantity of specified product from the shopping bag """
+def remove_from_cart(request, item_id):
+    """ Remove the quantity of specified product from the shopping cart """
 
     try:
         product = get_object_or_404(Product, pk=item_id)
@@ -89,10 +89,10 @@ def remove_from_bag(request, item_id):
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
+            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
         else:
             bag.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your bag')
+            messages.success(request, f'Removed {product.name} from your cart')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
