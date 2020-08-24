@@ -65,9 +65,11 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    all_category = Category.objects.all()
 
     context = {
         'product': product,
+        'all_category': all_category,
     }
 
     return render(request, 'products/product_detail.html', context)

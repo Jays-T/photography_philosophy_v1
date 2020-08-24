@@ -10,7 +10,22 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                
+                {% for category in all_category %}
+                <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
+                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+                
       <div class="image-container my-5">
+      {% if product.category %}
+                <a class="category-badge text-off-white text-decoration-none" 
+                                  href="{% url 'products' %}?category={{ product.category.name }}">
+                                  <i class="fas fa-long-arrow-alt-left"></i>
+                                  <span class="badge bg-transparent rounded-border p-2"> To {{ product.category.friendly_name }}
+                                  </span>
+                                </a>
+                {% endif %} 
         {% if product.image %}
         <a href="{{ product.image.url }}" target="_blank">
           <img
@@ -94,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col{% if has_size %}-12 mt-2{% endif %}">
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-1 mt-5">
+                    <a href="{% url 'products' %}?category={{ product.category.name }}" class="btn btn-outline-black rounded-1 mt-5">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>

@@ -11,17 +11,18 @@
         <div class="row">
             <div class="col text-center mt-3">
                 
-                <h2 class="logo-font text-off-white">{{ c.friendly_name }}Photos</h2>
                 {% if current_categories %}
                 {% for c in current_categories %}
+                <h2 class="logo-font">
                     <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
+                        <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
                     </a>
+                    </h2>
                 {% endfor %}
                 {% else %}
                 {% for category in all_category %}
                 <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
+                        <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ category.friendly_name }}</span>
                     </a>
                 {% endfor %}
                 {% endif %}
@@ -49,9 +50,16 @@
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-muted mt-3 text-center text-md-left text-off-white">
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
-                                <span class="small"><a class="text-off-white" href="{% url 'products' %}">All Photos</a> | </span>
+                                <a class="category-badge text-off-white text-decoration-none" 
+                                  href="{% url 'products' %}">
+                                  <i class="fas fa-long-arrow-alt-left"></i>
+                                  <span class="badge bg-transparent rounded-border p-2"> To All Categories
+                                  </span>
+                                </a> | 
                             {% endif %}
-                            {{ products|length }} Photos{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            {% if current_categories %}
+                            {% for c in current_categories %}
+                            {{ c.friendly_name }}{% endfor %}{% endif %} | {{ products|length }} Photos{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
