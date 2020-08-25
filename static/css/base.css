@@ -7,6 +7,7 @@ body {
     background-size: cover;
     height: calc(100vh - 184px);
     color: #555;
+    font-size: 16px;
     font-family: 'Lato';
     letter-spacing: 0.08em;
     overflow-x: hidden;
@@ -66,7 +67,7 @@ body {
 
 li .dropdown-item:hover,
 .list-inline-item:hover,
-.category-badge > .badge:hover,
+.category-badge .badge:hover,
 .nav-item a:hover,
 .btn-outline-black:hover,
 .btn-outline-black:active,
@@ -90,9 +91,9 @@ li .dropdown-item:hover,
     100% {
         background: rgba(10, 32, 39, 0.6);
         color: antiquewhite ;
-        -webkit-box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
-        -moz-box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
-        box-shadow: 0px 0px 6px 0.3px rgba(250, 215, 235, 0.8);
+        -webkit-box-shadow: 0px 0px 4px 0.3px rgba(250, 215, 235, 0.3);
+        -moz-box-shadow: 0px 0px 4px 0.3px rgba(250, 215, 235, 0.3);
+        box-shadow: 0px 0px 4px 0.3px rgba(250, 215, 235, 0.3);
     }
 }
 
@@ -285,8 +286,8 @@ input:focus {
     }
 
     body {
-        height: calc(100vh - 116px);
-        font-size: 0.6em;
+        height: calc(100vh - 126px);
+        font-size: 12px;
     }
 
     #mobile-portfolio-nav-link {
