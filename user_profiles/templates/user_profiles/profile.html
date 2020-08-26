@@ -57,7 +57,9 @@
     </div>
     <div class="col-12 col-lg-6 text-center">
         <p class="text-off-white text-uppercase">Order History</p>
+        <!-- {% if orders %}
         {{ orders }}
+        {% endif %} -->
     </div>
   </div>
 </div>
@@ -67,16 +69,31 @@
     {{ block.super }}
         <script type="text/javascript">
 
-            // ${document}.ready(function(){
-            //     let allInputs = '#update-profile-form[":input"]';
+            // $(document).ready(function(e){
+            //     let allInputs = '#update-profile-form input[type="*"]';
+                
+            //     if (allInputs).hasValue(function(){
+            //         $(this).css({
+            //             background: 'rgba(22, 31, 31, 0.2)!important',
+            //             color: 'antiquewhite !important'
+            //         });
+            //     });
 
-            //     for (let i = 0; i < allInputs.length; i++)
-            //     if (i).hasvalue(function(e){
-            //         $(this).each(function(n, element){
-            //             $("#" + element.id).css("background", "rgba(22, 31, 31, 0.2)!important"; "color", "antiquewhite !important";)
+            // $(document).ready(function(){
+
+                
+
+            // $('update-profile-form input[type="text"]').each(function(){
+            //     if(!$(this).val()){
+            //         $(this).addClass("empty");
+            //     } else {
+            //         $(this).css({
+            //             background: 'rgba(22, 31, 31, 0.2)!important',
+            //             color: 'antiquewhite !important'
             //         });
             //     });
             // });
+                
 
 
         </script>
