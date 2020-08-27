@@ -173,7 +173,7 @@ input::after {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgba(22, 31, 31, 0.5);
+    background: rgb(40, 59, 59);
     z-index: -1;
 }
 

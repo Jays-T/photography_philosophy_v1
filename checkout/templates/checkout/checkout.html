@@ -77,12 +77,12 @@
         <p class="text-off-white">Please fill out the form below to complete your order</p>
         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
             {% csrf_token %}
-            <fieldset class="rounded px-3 mb-5">
+            <fieldset class="rounded mb-5">
                 <legend class="fieldset-label small text-off-white px-2 w-auto">Details</legend>
                 {{ order_form.full_name | as_crispy_field }}
                 {{ order_form.email | as_crispy_field }}
             </fieldset>
-            <fieldset class="rounded px-3 mb-5">
+            <fieldset class="rounded mb-5">
                 <legend class="fieldset-label small text-off-white px-2 w-auto">Shipping</legend>
                 {{ order_form.phone_number | as_crispy_field }}
                 {{ order_form.street_address1 | as_crispy_field }}
@@ -103,8 +103,8 @@
                     {% endif %}
                 </div>
             </fieldset>
-            <fieldset class="rounded px-3">
-                <legend class="fieldset-label small text-off-white px-2 w-auto">Payment</legend>
+            <fieldset class="rounded">
+                <legend class="fieldset-label small text-off-white w-auto">Payment</legend>
                 <!--Stripe Card Element-->
                 <div class="mb-3" id="card-element"></div>
                 <!--Display Form Errors-->
