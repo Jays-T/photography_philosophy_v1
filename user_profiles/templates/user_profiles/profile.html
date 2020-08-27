@@ -1,21 +1,22 @@
 {% extends "base.html" %} 
+
 {% load static %} 
 
 {% block extra_css %}
 <!-- using styles from checkout to ensure uniformity on forms accross site-->
 <!-- class 'stripe-style-input' used for form inputs -->
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-    <link rel="stylesheet" href="{% static 'user_profiles/css/profiles.css' %}">
-{% endblock %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+<link rel="stylesheet" href="{% static 'user_profiles/css/profiles.css' %}" />
+{% endblock %} 
 
 {% block page_header %}
 <div class="header-container">
-    <div class="row bg-transparent">
-        <div class="col">
-        </div>
+  <div class="row bg-transparent">
+    <div class="col">
     </div>
+  </div>
 </div>
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
 <div class="overlay"></div>
@@ -32,89 +33,115 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-6 text-center">
-        <p class="text-off-white text-uppercase">Default Shipping Information</p>
-        <form action="{% url 'profile' %}" method="POST" id="update-profile-form">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button id="update-user-shipping-info-button" class="btn btn-outline-black rounded-1 float-right">
-                <span class="text-uppercase">Update Information
-                </span>
-            </button>
-        </form>
+      <p class="text-off-white text-uppercase">Default Shipping Information</p>
+      <form action="{% url 'profile' %}" method="POST" id="update-profile-form">
+        {% csrf_token %} {{ form|crispy }}
+        <button
+          id="update-user-shipping-info-button"
+          class="btn btn-outline-black rounded-1"
+        >
+          <span class="text-uppercase">Update Information </span>
+        </button>
+      </form>
     </div>
+
     <div class="col-12 col-lg-6 text-center">
-        <p class="text-off-white text-uppercase">Order History</p>
-        <div class="container">
-        {% for order in orders %}
-            <div class="row">
-                <div class="col-12 lg-3">
-                    <h6 class="text-off-white">Order Number</h6>
-                    <a class="category-badge text-decoration-none" href="{% url 'order_history' order.order_number %}"
-                       title="{{ order.order_number }}"
-                        >
-                        <span class="p-2 mt-2 badge text-off-white rounded-1">| {{ order.order_number|truncatechars:6 }} </span>
-                    </a>
-                </div>
-                <div class="col-12 lg-3">
-                    <h6 class="text-off-white">Date</h6>
-                    <span class="p-2 mt-2 badge text-off-white rounded-1"> {{ order.date }} </span>
-                </div>
-                <div class="col-12 lg-3"><h6 class="text-off-white">Items</h6>
-                    <ul class="list-unstyled">
-                        {% for item in order.lineitems.all %}
-                            <li title="{{ item.product.name }}" 
-                                class="small p-2 mt-2 badge text-off-white rounded-1"
-                                >
-                                {% if item.product.has_sizes %} Size {{ item.product.size|upper }}
-                                {% endif %} {{ item.product.name|truncatechars:8 }} x{{ item.quantity }} 
-                            </li>
-                                                
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="col-12 lg-3">
-                    <h6 class="text-off-white">Order Total</h6>
-                    <span class="p-2 mt-2 badge text-off-white rounded-1"> ${{ order.grand_total }} |
-                    </span>
-                </div>
-            </div>
-        {% endfor %}
+      <p class="text-off-white text-uppercase">Order History</p>
+      <div class="hide-on-mobile">
+        <div class="row">
+          <div class="col-12 col-lg-2 text-off-white">
+            <h6>Order Number</h6>
+          </div>
+          <div class="col-12 col-lg-5 text-off-white">
+            <h6>Date</h6>
+          </div>
+          <div class="col-12 col-lg-3 text-off-white">
+            <h6>Items</h6>
+          </div>
+          <div class="col-12 col-lg-2 text-off-white">
+            <h6>Total</h6>
+          </div>
         </div>
+      </div>
+      {% if orders %}
+      {% for order in orders %}
+      <div class="mt-2 rounded-border border-cart-items">
+        <div class="row">
+          <div class="col-12 col-lg-2">
+            <h6 class="show-on-mobile pt-3">Order Number</h6>
+            <hr class="show-on-mobile" />
+            <a
+              class="category-badge text-decoration-none"
+              href="{% url 'order_history' order.order_number %}"
+              title="{{ order.order_number }}"
+            >
+              <span class="p-2 mt-2 badge text-off-white rounded-1"
+                >{{ order.order_number|truncatechars:6 }}
+                </span>
+            </a>
+          </div>
+          <div class="col-12 col-lg-5">
+            <h6 class="show-on-mobile pt-3">Date</h6>
+            <hr class="show-on-mobile" />
+            <span class="p-2 mt-2 badge text-off-white rounded-1">
+              {{ order.date }}
+            </span>
+          </div>
+          <div class="col-12 col-lg-3 text-off-white">
+            <h6 class="show-on-mobile pt-3">Items</h6>
+            <hr class="show-on-mobile" />
+            <ul class="list-unstyled">
+              {% for item in order.lineitems.all %}
+              <li
+                title="{{ item.product.name }}"
+                class="small p-2 mt-2 badge text-off-white rounded-1"
+              >
+                {% if item.product.has_sizes %} Size {{ item.product.size|upper}} {% endif %} 
+                {{ item.product.name|truncatechars:8 }} x{{ item.quantity }}
+              </li>
+
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-12 col-lg-2 text-off-white">
+            <h6 class="show-on-mobile pt-3">Order Total</h6>
+            <span class="p-2 mt-2 badge text-off-white rounded-1">
+            ${{ order.grand_total }}
+            </span>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% endif %}
     </div>
   </div>
 </div>
-{% endblock %}
 
-{% block postload.js %}
-    {{ block.super }}
-        <script type="text/javascript">
+{% endblock %} 
 
-            // $(document).ready(function(e){
-            //     let allInputs = '#update-profile-form input[type="*"]';
-                
-            //     if (allInputs).hasValue(function(){
-            //         $(this).css({
-            //             background: 'rgba(22, 31, 31, 0.2)!important',
-            //             color: 'antiquewhite !important'
-            //         });
-            //     });
+{% block postload.js %} 
+{{ block.super }}
+<script>
+  // $(document).ready(function(e){
+  //     let allInputs = '#update-profile-form input[type="*"]';
 
-            // $(document).ready(function(){
+  //     if (allInputs).hasValue(function(){
+  //         $(this).css({
+  //             background: 'rgba(22, 31, 31, 0.2)!important',
+  //             color: 'antiquewhite !important'
+  //         });
+  //     });
 
-                
+  // $(document).ready(function(){
 
-            // $('update-profile-form input[type="text"]').each(function(){
-            //     if(!$(this).val()){
-            //         $(this).addClass("empty");
-            //     } else {
-            //         $(this).css({
-            //             background: 'rgba(22, 31, 31, 0.2)!important',
-            //             color: 'antiquewhite !important'
-            //         });
-            //     });
-            // });
-                
-
-
-        </script>
+  // $('update-profile-form input[type="text"]').each(function(){
+  //     if(!$(this).val()){
+  //         $(this).addClass("empty");
+  //     } else {
+  //         $(this).css({
+  //             background: 'rgba(22, 31, 31, 0.2)!important',
+  //             color: 'antiquewhite !important'
+  //         });
+  //     });
+  // });
+</script>
 {% endblock %}

@@ -21,7 +21,7 @@ body {
     overflow-y: auto;
 }
 
-.mobile-prod-info {
+.show-on-mobile {
     display: none;
 }
 
@@ -318,7 +318,7 @@ input::after {
         font-size: 12px;
     }
 
-    .mobile-prod-info {
+    .show-on-mobile {
     margin: 0;
     display: block;
     }
