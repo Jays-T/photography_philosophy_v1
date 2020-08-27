@@ -10,8 +10,14 @@ body {
     font-size: 16px;
     font-family: 'Lato';
     letter-spacing: 0.08em;
+    width: auto;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .main-content {
@@ -137,8 +143,7 @@ input::after {
 
 .nav-edge-glow,
 .order-item-info-card,
-.badge, 
-.border-cart-items {
+.badge {
         background: rgba(10, 32, 39, 0.6);
         color: antiquewhite ;
         -webkit-box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
@@ -197,7 +202,7 @@ input::after {
 
 #footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0 !important;
   height: 3.5rem;
 }
 
@@ -305,7 +310,7 @@ input::after {
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
-@media (max-width: 991px) {
+@media (max-width: 1268px) {
     .header-container {
         padding-top: 0px;
     }
@@ -331,4 +336,11 @@ input::after {
     .overlay {
     background: rgba(22, 31, 31, 0.8);
 }
+}
+
+@media (max-width: 764px) {
+    nav li p,
+    .nav-item {
+        font-size: 0.75em;
+    }
 }

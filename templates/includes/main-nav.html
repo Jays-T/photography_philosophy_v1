@@ -2,7 +2,12 @@
     <ul class="navbar-nav w-auto mx-auto">
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-off-white mr-5" href="#" id="all-photos-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" 
+            class="logo-font font-weight-bold nav-link text-off-white mr-3" 
+            id="all-photos-link" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
                 Shop Photos
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-photos-link">
@@ -21,19 +26,31 @@
         </li>
 
         <li class="nav-item">
-            <a href="{% url 'products' %}" class="{% if '/products/' in request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-5" id="portfolio-link" aria-haspopup="false" aria-expanded="false">
+            <a href="{% url 'products' %}" 
+            class="{% if '/products/' in request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-3" 
+            id="portfolio-link" 
+            aria-haspopup="false" 
+            aria-expanded="false">
                 Portfolio
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="{% if '/about/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-5" href="#" id="about-link" aria-haspopup="false" aria-expanded="false">
+            <a href="#" 
+            class="{% if '/about/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-3" 
+            id="about-link" 
+            aria-haspopup="false" 
+            aria-expanded="false">
                 About
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="{% if '/contact/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-5" href="#" id="contact-link" aria-haspopup="false" aria-expanded="false">
+            <a href="#" 
+            class="{% if '/contact/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-3" 
+            id="contact-link" 
+            aria-haspopup="false" 
+            aria-expanded="false">
                 Contact
             </a>
         </li>

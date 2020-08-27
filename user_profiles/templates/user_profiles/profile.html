@@ -30,7 +30,7 @@
   </div>
 </div>
 <!-- Profile Info Rendered Here -->
-<div class="container">
+<section name="user-profile-info" class="container">
   <div class="row">
     <div class="col-12 col-lg-6 text-center">
       <p class="text-off-white text-uppercase">Default Shipping Information</p>
@@ -65,11 +65,11 @@
       </div>
       {% if orders %}
       {% for order in orders %}
-      <div class="mt-2 rounded-border border-cart-items">
+      <div class="mt-2">
         <div class="row">
-          <div class="col-12 col-lg-2">
-            <h6 class="show-on-mobile pt-3">Order Number</h6>
-            <hr class="show-on-mobile" />
+          <div class="col-12 col-lg-2 order-hist-col">
+            <h6 class="show-on-mobile pt-3 text-off-white">Order Number</h6>
+
             <a
               class="category-badge text-decoration-none"
               href="{% url 'order_history' order.order_number %}"
@@ -80,16 +80,14 @@
                 </span>
             </a>
           </div>
-          <div class="col-12 col-lg-5">
-            <h6 class="show-on-mobile pt-3">Date</h6>
-            <hr class="show-on-mobile" />
+          <div class="col-12 col-lg-5 order-hist-col">
+            <h6 class="show-on-mobile pt-3 text-off-white">Date</h6>
             <span class="p-2 mt-2 badge text-off-white rounded-1">
               {{ order.date }}
             </span>
           </div>
-          <div class="col-12 col-lg-3 text-off-white">
-            <h6 class="show-on-mobile pt-3">Items</h6>
-            <hr class="show-on-mobile" />
+          <div class="col-12 col-lg-3 order-hist-col">
+            <h6 class="show-on-mobile pt-3 text-off-white">Items</h6>
             <ul class="list-unstyled">
               {% for item in order.lineitems.all %}
               <li
@@ -103,45 +101,21 @@
               {% endfor %}
             </ul>
           </div>
-          <div class="col-12 col-lg-2 text-off-white">
-            <h6 class="show-on-mobile pt-3">Order Total</h6>
-            <span class="p-2 mt-2 badge text-off-white rounded-1">
+          <div class="col-12 col-lg-2 order-hist-col">
+            <h6 class="show-on-mobile text-off-white">Order Total</h6>
+            <span class="p-2 mt-2 mb-3 badge text-off-white rounded-1">
             ${{ order.grand_total }}
             </span>
           </div>
         </div>
       </div>
+      <hr class="border-cart-items" />
       {% endfor %} {% endif %}
     </div>
   </div>
-</div>
+</section>
 
 {% endblock %} 
 
-{% block postload.js %} 
-{{ block.super }}
-<script>
-  // $(document).ready(function(e){
-  //     let allInputs = '#update-profile-form input[type="*"]';
-
-  //     if (allInputs).hasValue(function(){
-  //         $(this).css({
-  //             background: 'rgba(22, 31, 31, 0.2)!important',
-  //             color: 'antiquewhite !important'
-  //         });
-  //     });
-
-  // $(document).ready(function(){
-
-  // $('update-profile-form input[type="text"]').each(function(){
-  //     if(!$(this).val()){
-  //         $(this).addClass("empty");
-  //     } else {
-  //         $(this).css({
-  //             background: 'rgba(22, 31, 31, 0.2)!important',
-  //             color: 'antiquewhite !important'
-  //         });
-  //     });
-  // });
-</script>
+{% block postload.js %}
 {% endblock %}
