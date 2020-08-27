@@ -21,6 +21,10 @@ body {
     overflow-y: auto;
 }
 
+.mobile-prod-info {
+    display: none;
+}
+
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0; 
@@ -131,6 +135,20 @@ input::after {
     border: 1px solid black !important;
 }
 
+.nav-edge-glow,
+.order-item-info-card,
+.badge, 
+.border-cart-items {
+        background: rgba(10, 32, 39, 0.6);
+        color: antiquewhite ;
+        -webkit-box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
+        -moz-box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
+        box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
+        /* -webkit-box-shadow: inset 0px 0px 12px 6px rgba(255,255,255,1);
+        -moz-box-shadow: inset 0px 0px 12px 6px rgba(255,255,255,1);
+        box-shadow: inset 0px 0px 12px 6px rgba(255,255,255,1); */
+}
+
 .rounded-border {
     border-radius: 5px !important;
 }
@@ -183,7 +201,7 @@ input::after {
 #footer {
   position: absolute;
   bottom: 0;
-  height: 2.5rem;
+  height: 3.5rem;
 }
 
 /* ------------------------------- bootstrap toasts */
@@ -300,8 +318,13 @@ input::after {
         font-size: 12px;
     }
 
-    #mobile-portfolio-nav-link {
-    display: inline-block;
+    .mobile-prod-info {
+    margin: 0;
+    display: block;
+    }
+
+    .hide-on-mobile {
+        display: none;
     }
 
     .navbar-toggler {
