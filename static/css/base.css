@@ -16,6 +16,9 @@ body {
 
 .main-content {
     min-height: calc(100vh - 30.5vh);
+    max-width: 90vw !important;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */

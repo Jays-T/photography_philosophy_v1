@@ -1,3 +1,9 @@
+.order-history {
+    max-height: 416px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .fieldset-label {
     position: relative;
     right: .5rem;

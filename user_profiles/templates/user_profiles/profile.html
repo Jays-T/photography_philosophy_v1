@@ -36,19 +36,6 @@
         <form action="{% url 'profile' %}" method="POST" id="update-profile-form">
             {% csrf_token %}
             {{ form|crispy }}
-            <!-- <fieldset class="rounded px-3 mb-5">
-                <legend class="fieldset-label small text-off-white px-2 w-auto">Default Shipping Address:</legend>
-                {{ form.default_phone_number | as_crispy_field }}
-                {{ form.default_street_address1 | as_crispy_field }}
-                {{ form.default_street_address2 | as_crispy_field }}
-                {{ form.default_town_or_city | as_crispy_field }}
-                {{ form.default_postcode | as_crispy_field }}
-                {{ form.default_county | as_crispy_field }}
-                {{ form.default_country | as_crispy_field }}
-                <div class="form-check form-check-inline float-right mr-0">
-                        <label class="form-check-label text-off-white" for="save-shipping-info">Save this shipping address to my profile</label>
-                </div>
-            </fieldset> -->
             <button id="update-user-shipping-info-button" class="btn btn-outline-black rounded-1 float-right">
                 <span class="text-uppercase">Update Information
                 </span>
@@ -57,9 +44,57 @@
     </div>
     <div class="col-12 col-lg-6 text-center">
         <p class="text-off-white text-uppercase">Order History</p>
-        <!-- {% if orders %}
-        {{ orders }}
-        {% endif %} -->
+        <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless text-off-white">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                    <a class="category-badge text-decoration-none" href="{% url 'order_history' order.order_number %}"
+                                       title="{{ order.order_number }}"
+                                       >
+                                        <span class="p-2 mt-2 badge text-off-white rounded-1">| {{ order.order_number|truncatechars:6 }} |</span>
+                                    </a>
+                                    <hr class="w-50 mb-1">
+                                    </td>
+                                    <td><p>
+                                        <span class="p-2 mt-2 badge text-off-white rounded-1">| {{ order.date }} |</span>
+                                        </p>
+                                        <hr class="w-50 mb-1">
+                                    </td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                                <li title="{{ item.product.name }}" 
+                                                    class="small p-2 mt-2 badge text-off-white rounded-1 list-inline-item"
+                                                    >
+                                                    |{% if item.product.has_sizes %} Size {{ item.product.size|upper }}
+                                                    {% endif %} {{ item.product.name|truncatechars:8 }} x{{ item.quantity }} |
+                                                </li>
+                                                
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td><p title="{{ order.grand_total }}">
+                                            <span class="p-2 mt-2 badge text-off-white rounded-1">| ${{ order.grand_total }} |
+                                            </span>
+                                        </p>
+                                        <hr class="w-50 mb-1">
+                                    </td>   
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
     </div>
   </div>
 </div>
