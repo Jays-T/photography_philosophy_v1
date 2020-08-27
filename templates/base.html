@@ -148,9 +148,15 @@
                       aria-expanded="false"
                     >
                       <div class="text-center">
+                      {% if request.user.is_authenticated %}
                         <div><i class="fas fa-user fa-lg"></i></div>
-                        <p class="my-0">{% if username in user %}{{ user.username }}{% else %}Account{% endif %}</p>
+                        <p class="p-1 my-0 nav-edge-glow rounded-border">LoggedIn</p>
                       </div>
+                      {% else %}
+                      <div><i class="fas fa-user fa-lg"></i></div>
+                        <p class="my-0">Account</p>
+                      </div>
+                      {% endif %}
                     </a>
                     <div
                       class="dropdown-menu border-0"

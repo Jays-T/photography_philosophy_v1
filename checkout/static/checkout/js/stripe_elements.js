@@ -58,6 +58,7 @@ form.addEventListener("submit", function (ev) {
   card.update({ disabled: true });
   $("#submit-button").attr("disabled", true);
   $("#payment-form").fadeToggle(100);
+  $('#checkout-load-overlay').fadeToggle(100);
 
   // Capture form data
   var saveInfo = Boolean($("#id-save-info").attr("checked"));
@@ -112,6 +113,7 @@ form.addEventListener("submit", function (ev) {
         `;
             $(errorDiv).html(html);
             $("#payment-form").fadeToggle(100);
+            $('#checkout-load-overlay').fadeToggle(100);
             card.update({ disabled: false });
             $("#submit-button").attr("disabled", false);
           } else {
@@ -127,3 +129,5 @@ form.addEventListener("submit", function (ev) {
       location.reload();
     });
 });
+
+
