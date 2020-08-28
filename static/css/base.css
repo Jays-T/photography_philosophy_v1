@@ -63,19 +63,35 @@ body {
     text-transform: uppercase;
 }
 
+.text-black-strong {
+    color: #000;
+}
+
+.text-black {
+    color: rgb(20, 19, 19) !important;
+}
+
+.text-user {
+    font-weight: 700;
+}
+
+.text-off-white {
+    color: antiquewhite !important;
+}
+
 .main-logo-link {
     width: fit-content;
 }
 
 .btn-black {
-    background: black;
+    background: rgb(12, 12, 12);
     color: antiquewhite;
 }
 
 .btn-outline-black {
     background: antiquewhite;
-    color: black;
-    border: 1px solid black;
+    color: rgb(12, 12, 12);
+    border: 1px solid rgb(12, 12, 12);
 }
 
 li .dropdown-item:hover,
@@ -124,25 +140,26 @@ input::after {
     color: antiquewhite !important;
 }
 
+.free-shipping-alert {
+    background: #17a2b8 !important;
+
+}
     
 .nav-item .active {
     text-decoration: underline;
 }
 
-.text-black {
-    color: #000 !important;
-}
 
-.text-off-white {
-    color: antiquewhite !important;
-}
 
 .border-black {
     border: 1px solid black !important;
 }
 
+.rounded-border {
+    border-radius: 5px !important;
+}
+
 .nav-edge-glow,
-.order-item-info-card,
 .badge {
         background: rgba(10, 32, 39, 0.6);
         color: antiquewhite ;
@@ -151,9 +168,9 @@ input::after {
         box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
 }
 
-.rounded-border {
-    border-radius: 5px !important;
-}
+/* .order-item-info-card {
+    background: antiquewhite;
+} */
 
 .bg-black {
     background: #000 !important;
@@ -173,7 +190,7 @@ input::after {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgb(40, 59, 59);
+    background: rgb(135, 145, 145);
     z-index: -1;
 }
 
@@ -195,6 +212,7 @@ input::after {
 
 .scroll-up-link,
 .update-link,
+.item-cart-link,
 .remove-item {
     text-decoration: none !important;
     cursor: pointer;

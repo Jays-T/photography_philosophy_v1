@@ -78,7 +78,7 @@
         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
             {% csrf_token %}
             <fieldset class="rounded mb-5">
-                <legend class="fieldset-label small text-off-white px-2 w-auto">Details</legend>
+                <legend label="{{ order_form.label.full_name }}" class="fieldset-label small text-off-white px-2 w-auto">Details</legend>
                 {{ order_form.full_name | as_crispy_field }}
                 {{ order_form.email | as_crispy_field }}
             </fieldset>
@@ -104,7 +104,7 @@
                 </div>
             </fieldset>
             <fieldset class="rounded">
-                <legend class="fieldset-label small text-off-white w-auto">Payment</legend>
+                <legend class="fieldset-label small text-off-white px-2 w-auto">Payment</legend>
                 <!--Stripe Card Element-->
                 <div class="mb-3" id="card-element"></div>
                 <!--Display Form Errors-->
