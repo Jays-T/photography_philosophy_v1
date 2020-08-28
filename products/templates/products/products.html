@@ -9,7 +9,7 @@
 <div class="overlay"></div>
         <div class="row">
             <div class="col text-center mt-3">
-                
+<!--Show either current selected category or all categories-->               
                 {% if current_categories %}
                 {% for c in current_categories %}
                 <h2 class="logo-font">
@@ -29,6 +29,7 @@
             </div>
         </div>
         <div class="row">
+<!--Sort Selector-->
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
@@ -58,7 +59,10 @@
                             {% endif %}
                             {% if current_categories %}
                             {% for c in current_categories %}
-                            {{ c.friendly_name }}{% endfor %}{% endif %} | {{ products|length }} Photos{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            {{ c.friendly_name }}
+                            {% endfor %}
+                            {% endif %}
+                             | {{ products|length }} Photos{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>

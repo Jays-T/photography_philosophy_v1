@@ -22,15 +22,22 @@
       </div>
    </div>
    <div class="row">
+
 <!--Admin Hub-->
       <div class="col-12 col-lg-6 mb-5">
          <h5 class="text-off-white logo-font">Manage Products</h5>
+         {% if '/edit/' in request.path %}
+         <h5 class="text-off-white mt-0 mb-1"><i class="fas fa-long-arrow-alt-right"></i> Editing 
+            <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ product.name }}
+            </span>
+         </h5>
+         {% endif %}
          <div class="row">
             <div class="col-12 text-off-white">
                <p class="text-off-white small mt-0 mb-1">Options</p>
                <div id="accordion">
                   <div class="card nav-edge-glow mb-2">
-                     <div class="card-header" id="headingOne">
+                     <div class="card-header" id="addNew">
                         <h5 class="mb-0">
                            <button class="btn btn-outline-black rounded-1 collapsed" 
                               data-toggle="collapse" 
@@ -42,71 +49,69 @@
                         </h5>
                      </div>
 <!--Add Product Form-->
-                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                     <div id="collapseOne" class="collapse" aria-labelledby="addNew" data-parent="#accordion">
                         <div class="card-body">
                            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                               {% csrf_token %}
                               {{ form | crispy }}
                               <div class="text-right">
-                                 <a class="btn btn-outline-black rounded-1" href="{% url 'products' %}">Cancel</a>
+                                 <a class="btn btn-outline-black rounded-1" href="{% url 'products_admin_hub' %}">Cancel</a>
                                  <button class="btn btn-black rounded-1" type="submit">Add Product</button>
                               </div>
                            </form>
                         </div>
                      </div>
                   </div>
+                  {% if '/edit/' in request.path %}
                   <div class="card nav-edge-glow mb-2">
-                     <div class="card-header" id="headingTwo">
+                     <div class="card-header" id="editProduct">
                         <h5 class="mb-0">
                            <button class="btn btn-outline-black rounded-1 collapsed" 
                               data-toggle="collapse" 
-                              data-target="#collapseTwo" 
-                              aria-expanded="false" 
+                              data-target="#collapseTwo"
+                              aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
                               aria-controls="collapseTwo">
                            Edit/Update
                            </button>
                         </h5>
                      </div>
-                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                     <div id="collapseTwo" class="{% if '/edit/' in request.path %}collapse-show{% else %}collapse{% endif %}" 
+                        aria-labelledby="editProduct" data-parent="#accordion">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <p class="text-off-white small mt-0 mb-1">Categories</p>
-                                    {% for c in all_categories %}
-                                        <a class="d-block category-badge text-decoration-none" 
-                                        href="{% url 'products' %}?category={{ c.all_categories.name }}">
-                                        <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                                <div class="col-5 d-flex flex-column">
-                                    <p class="text-off-white small mt-0 mb-1">Products in Category</p>
-                                    {% for p in products%}
-                                        <div class="row">
-                                            <div class="col-4">
-                                            <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ p.name }}</span>
-                                            </div>
-                                            <div class="col-2">
-                                            <a class="d-block category-badge text-decoration-none" 
-                                            href="{% url 'product_detail' p.id %}">
-                                            <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">Edit</span>
-                                            </a>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
+<!--Edit/Update Products form-->
                            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                               {% csrf_token %}
                               {{ form | crispy }}
                               <div class="text-right">
-                                 <a class="btn btn-outline-black rounded-1" href="{% url 'products' %}">Cancel</a>
+                                 <a class="btn btn-outline-black rounded-1" href="{% url 'products_admin_hub' %}">Cancel</a>
                                  <button class="btn btn-black rounded-1" type="submit">Update Product</button>
                               </div>
                            </form>
                         </div>
                      </div>
                   </div>
+                  {% else %}
+                  <div class="card nav-edge-glow mb-2">
+                     <div class="card-header" id="editInstruct">
+                        <h5 class="mb-0">
+                           <button class="btn btn-outline-black rounded-1 collapsed" 
+                              data-toggle="collapse" 
+                              data-target="#instruct"
+                              aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
+                              aria-controls="instruct">
+                           Edit/Update
+                           </button>
+                        </h5>
+                     </div>
+                     <div id="instruct" class="{% if '/edit/' in request.path %}collapse-show{% else %}collapse{% endif %}" 
+                        aria-labelledby="editInstruct" data-parent="#accordion">
+                        <div class="card-body">
+                        <p>Select a Category from the Categories<span><i class="fas fa-long-arrow-alt-right float-right"></i></span></p>
+                        <p>And then click the 'edit' button beneath the product you want to edit.</p>
+                        </div>
+                     </div>
+                  </div>
+                  {% endif %}
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
@@ -131,20 +136,10 @@
       </div>
 <!--Admin Product / Category info-->
       <div class="col-12 col-lg-6 mb-5">
+       {% if '/edit/' in request.path %}
+         {% else %}
          <h5 class="text-off-white logo-font">Shopwide Summary</h5>
          <div class="row">
-            <div class="col-12 col-lg-6">
-               <p class="text-off-white small mt-0 mb-1">Products</p>
-               {% if products %}
-               <p class="d-block badge bg-transparent rounded-border text-off-white p-2">Total &nbsp;| &nbsp;{{ products|length }}&nbsp; | &nbsp;products</p>
-               {% endif %}
-               <p class="my-0 text-off-white">
-                  <strong>{{ item.product.name }}</strong>
-               </p>
-               <p class="my-0 small text-off-white">
-                  Size: {% if item.product.has.sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
-               </p>
-            </div>
             <div class="col-12 col-lg-6">
                <p class="text-off-white small mt-0 mb-1">Categories</p>
                {% if all_categories %}
@@ -152,13 +147,43 @@
                   Total &nbsp;| &nbsp;{{ all_categories|length }}&nbsp; | &nbsp;categories
                </p>
                {% for c in all_categories %}
-               <a class="d-block category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
-               <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
+               <a class="d-block category-badge text-decoration-none" href="{% url 'products_admin_hub' %}?category={{ c.name }}">
+               <span class="p-2 mt-2 badge text-off-white rounded-1">{{ c.friendly_name }}</span>
                </a>
                {% endfor %}
                {% endif %}
+            </div>         
+            <div class="col-12 col-lg-6">
+               <p class="text-off-white small mt-0 mb-1">Products</p>
+               {% if products %}
+               <p class="d-block badge bg-transparent rounded-border text-off-white p-2">Total &nbsp;| &nbsp;{{ products|length }}&nbsp; | &nbsp;products</p>
+               {% endif %}
+               {% if current_categories %}
+               {% for c in current_categories %}
+               <p class="d-block nav-edge-glow rounded-border text-off-white text-center p-2">
+               <span class="d-block">Current Category</span>
+               <span class="d-block nav-edge-glow rounded-border p-2">{{ c.friendly_name }}</span>
+               </p>
+                {% endfor %}
+                
+               <div class="d-flex flex-column">
+               {% for p in products%}
+                <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ p.name }}</span>
+                    <a class="text-center category-badge text-decoration-none" 
+                       href="{% url 'edit_product' p.id %}">
+                       <span class="p-2 mt-2 badge text-off-white rounded-1">
+                       <i class="fas fa-sort-up fa-sm pr-2"></i>Edit<i class="fas fa-sort-up fa-sm pl-2">
+                       </i></span>
+                       <hr class="my-0 mt-1 mb-1">
+                    </a>
+                    
+                {% endfor %}
+                </div>
+                {% endif %}
             </div>
+
          </div>
+         {% endif %}
       </div>
    </div>
    <hr class="my-0 mt-1 mb-1">
