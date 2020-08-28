@@ -104,7 +104,7 @@ def add_product(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('add_product'))
+            return redirect('products_admin_hub')
         else:
             messages.error(request, 'Failed to add product. \
                                      Please check the form.')
@@ -117,3 +117,49 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+def admin_show_products(request):
+    """
+    Display products by category
+    in Admin Product Hub
+    """
+    products = Product.objects.all()
+    categories = None
+
+    if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
+    context = {
+        'products': products,
+        'current_categories': categories,
+    }
+
+    return redirect('products_admin_hub', request, context)
+
+
+def edit_product(request, product_id):
+    """ Edit a product in the store """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = AdminProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product.\
+                                     Please check the form.')
+    else:
+        form = AdminProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, context)
