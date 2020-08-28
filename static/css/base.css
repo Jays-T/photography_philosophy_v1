@@ -84,7 +84,7 @@ body {
 }
 
 .btn-black {
-    background: rgb(12, 12, 12);
+    background: rgb(24, 23, 23);
     color: antiquewhite;
 }
 
@@ -199,7 +199,7 @@ input::after {
 }
 
 .top-padding-index-navbar {
-    padding-top: 54vh;
+    padding-top: 50vh;
 }
 
 .scroll-up-button {

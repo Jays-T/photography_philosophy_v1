@@ -1,0 +1,83 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% load bag_tools %} 
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="header-container">
+  <div class="row bg-transparent">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %} 
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <hr />
+      <h2 class="logo-font mb-4 text-off-white">Admin Product Hub</h2>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+<!--Admin Add Product-->
+    <div class="col-12 col-lg-6 mb-5">
+        <h5 class="text-off-white logo-font">Add Product</h5>
+
+        <div class="row">
+            <div class="col-12 text-off-white">
+                
+                <form method="POST" action="{% url 'products_admin_hub' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-right">
+                        <a class="btn btn-outline-black rounded-1" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn btn-black rounded-1" type="submit">Add Product</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+<!--Admin Product / Category info-->
+  <div class="col-12 col-lg-6 mb-5">
+    <h5 class="text-off-white logo-font">Shopwide Summary</h5>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+            <p class="text-off-white small mt-0 mb-1">Products</p>
+                {% if products %}
+                <p class="d-block badge bg-transparent rounded-border text-off-white p-2">Total &nbsp;| &nbsp;{{ products|length }}&nbsp; | &nbsp;products</p>
+                {% endif %}
+                
+                <p class="my-0 text-off-white"><strong>{{ item.product.name }}</strong></p>
+                <p class="my-0 small text-off-white">
+                    Size: {% if item.product.has.sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+                </p>
+            </div>
+            <div class="col-12 col-lg-6">
+            <p class="text-off-white small mt-0 mb-1">Categories</p>
+                {% if all_categories %}
+                <p class="d-block badge bg-transparent rounded-border text-off-white p-2">
+                    Total &nbsp;| &nbsp;{{ all_categories|length }}&nbsp; | &nbsp;categories
+                </p>
+                {% for c in all_categories %}
+                <a class="d-block category-badge text-decoration-none" href="{% url 'products' %}?category={{ category.name }}">
+                        <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ c.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+  </div>
+  <hr class="my-0 mt-1 mb-1">
+</div>
+{% endblock %}

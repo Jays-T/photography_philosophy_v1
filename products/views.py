@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+
 from .models import Product, Category
+from .forms import AdminProductForm
 
 # Create your views here.
 
@@ -73,3 +75,20 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+def products_admin_hub(request):
+    """ View for Admin to handle product CRUD functions """
+
+    products = Product.objects.all()
+    all_categories = Category.objects.all()
+    form = AdminProductForm()
+    template = 'products/products_hub.html'
+
+    context = {
+        'products': products,
+        'all_categories': all_categories,
+        'form': form,
+    }
+
+    return render(request, template, context)
