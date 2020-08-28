@@ -16,8 +16,11 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Shipping Address updated successfully')
-
-    form = UserProfileForm(instance=profile)
+        else:
+            messages.error(request, 'Update failed. Please check to make sure\
+                                     you have filled in the form correctly.')
+    else:
+        form = UserProfileForm(instance=profile)
     orders = profile.user_order_history.all()
 
     template = 'user_profiles/profile.html'
@@ -34,7 +37,8 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
-        f'This is not a new confirmation, this was for order number: {order_number}. '
+        f'This is not a new confirmation, this was for order\
+          number: {order_number}. '
         'A confirmation email was sent on the original order date.'
     ))
 

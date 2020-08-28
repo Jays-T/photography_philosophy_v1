@@ -7,7 +7,7 @@ body {
     background-size: cover;
     /* height: calc(100vh - 184px); */
     color: #555;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Lato';
     letter-spacing: 0.08em;
     width: auto;
@@ -22,7 +22,7 @@ body {
 
 .main-content {
     min-height: calc(100vh - 30.5vh);
-    max-width: 90vw !important;
+    max-width: 98vw !important;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -190,12 +190,12 @@ input::after {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgb(135, 145, 145);
+    background: rgba(135, 145, 145, 0.98);
     z-index: -1;
 }
 
 .top-margin {
-    margin-top: 18vh;
+    margin-top: 22vh;
 }
 
 .top-padding-index-navbar {
@@ -335,7 +335,7 @@ input::after {
 
     body {
         /* height: calc(100vh - 126px); */
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .show-on-mobile {
@@ -350,10 +350,6 @@ input::after {
     .navbar-toggler {
         border: none !important;
     }
-
-    .overlay {
-    background: rgba(22, 31, 31, 0.8);
-}
 }
 
 @media (max-width: 764px) {

@@ -78,7 +78,7 @@ def product_detail(request, product_id):
 
 
 def products_admin_hub(request):
-    """ View for Admin to handle product CRUD functions """
+    """Display Admin Product Hub"""
 
     products = Product.objects.all()
     all_categories = Category.objects.all()
@@ -88,6 +88,31 @@ def products_admin_hub(request):
     context = {
         'products': products,
         'all_categories': all_categories,
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def add_product(request):
+    """
+    View for Admin to handle product CRUD functions
+    Add a product to the store
+    """
+    if request.method == 'POST':
+        form = AdminProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add product. \
+                                     Please check the form.')
+    else:
+        form = AdminProductForm()
+
+    template = 'products/products_hub.html'
+    context = {
         'form': form,
     }
 
