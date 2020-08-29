@@ -168,10 +168,6 @@ input::after {
         box-shadow: inset 0px 0px 5px 0.5px rgba(250, 215, 235, 0.3);
 }
 
-/* .order-item-info-card {
-    background: antiquewhite;
-} */
-
 .bg-black {
     background: #000 !important;
 }
@@ -222,6 +218,23 @@ input::after {
   position: absolute;
   bottom: 0 !important;
   height: 3.5rem;
+}
+
+/* Product Form */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 
 /* ------------------------------- bootstrap toasts */

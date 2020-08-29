@@ -1,9 +1,11 @@
 {% extends "base.html" %} 
 {% load static %} 
-{% load bag_tools %} 
+{% load bag_tools %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
+
 {% block page_header %}
 <div class="header-container">
    <div class="row bg-transparent">
@@ -11,6 +13,7 @@
    </div>
 </div>
 {% endblock %} 
+
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
@@ -36,6 +39,8 @@
             <div class="col-12 text-off-white">
                <p class="text-off-white small mt-0 mb-1">Options</p>
                <div id="accordion">
+               {% if '/edit/' in request.path %}
+               {% else %}
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="addNew">
                         <h5 class="mb-0">
@@ -53,7 +58,13 @@
                         <div class="card-body">
                            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {{ form | crispy }}
+                              {% for field in form %}
+                                {% if field.name != 'image' %}
+                                {{ field | as_crispy_field }}
+                                {% else %}
+                                {{ field }}
+                                {% endif %}
+                              {% endfor %}
                               <div class="text-right">
                                  <a class="btn btn-outline-black rounded-1" href="{% url 'products_admin_hub' %}">Cancel</a>
                                  <button class="btn btn-black rounded-1" type="submit">Add Product</button>
@@ -62,6 +73,7 @@
                         </div>
                      </div>
                   </div>
+                {% endif %}
                   {% if '/edit/' in request.path %}
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="editProduct">
@@ -81,7 +93,14 @@
 <!--Edit/Update Products form-->
                            <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {{ form | crispy }}
+                              {% for field in form %}
+                                {% if field.name != 'image' %}
+                                {{ field | as_crispy_field }}
+                                {% else %}
+                                {{ field }}
+                                {% endif %}
+                              {% endfor %}
+                              <small id="upload-text"></small>
                               <div class="text-right">
                                  <a class="btn btn-outline-black rounded-1" href="{% url 'products_admin_hub' %}">Cancel</a>
                                  <button class="btn btn-black rounded-1" type="submit">Update Product</button>
@@ -194,4 +213,7 @@
    </div>
    <hr class="my-0 mt-1 mb-1">
 </div>
+{% endblock %}
+
+{% block postloadjs %}
 {% endblock %}
