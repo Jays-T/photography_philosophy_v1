@@ -327,6 +327,12 @@ input::after {
     }
 }
 
+@media (min-width: 768px){
+.mt-product-details-lg {
+    margin-top: 6rem!important;
+}
+}
+
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 1268px) {
     .header-container {

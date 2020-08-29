@@ -81,12 +81,12 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
+
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
-                                        <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                        <div class="col-12">
+                                            <p class="mb-2">{{ product.name }}</p>
                                             {% if product.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
@@ -98,6 +98,24 @@
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
+                                            {% endif %}
+                                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                            
+                                        </div>
+                                        <div class="col-12">
+                                            {% if request.user.is_superuser %}
+                                            <a class="category-badge text-off-white" 
+                                                href="{% url 'edit_product' product.id %}">
+													<span class="p-2 badge text-off-white rounded-1 mt-2">
+													    <i class="far fa-edit"></i> | Edit
+													</span>
+												    </a>
+                                                    <a class="category-badge remove-item"
+                                                    href="{% url 'delete_product' product.id %}">
+												    <span class="p-2 badge text-off-white rounded-1 mt-2">  
+													| Delete | <i class="fas fa-exclamation-triangle text-danger"></i>
+												</span>
+											</a>
                                             {% endif %}
                                         </div>
                                     </div>

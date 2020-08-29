@@ -79,7 +79,7 @@
                         aria-labelledby="editProduct" data-parent="#accordion">
                         <div class="card-body">
 <!--Edit/Update Products form-->
-                           <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+                           <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                               {% csrf_token %}
                               {{ form | crispy }}
                               <div class="text-right">
@@ -165,17 +165,23 @@
                <span class="d-block nav-edge-glow rounded-border p-2">{{ c.friendly_name }}</span>
                </p>
                 {% endfor %}
-                
+                <p class="text-off-white small mt-0 mb-1">Products in category</p>
                <div class="d-flex flex-column">
                {% for p in products%}
                 <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ p.name }}</span>
                     <a class="text-center category-badge text-decoration-none" 
                        href="{% url 'edit_product' p.id %}">
                        <span class="p-2 mt-2 badge text-off-white rounded-1">
-                       <i class="fas fa-sort-up fa-sm pr-2"></i>Edit<i class="fas fa-sort-up fa-sm pl-2">
+                        <i class="fas fa-sort-up fa-sm pr-2"></i>Edit<i class="fas fa-sort-up fa-sm pl-2">
                        </i></span>
                        <hr class="my-0 mt-1 mb-1">
                     </a>
+                    <a class="category-badge remove-item text-right"
+                        href="{% url 'delete_product' p.id %}">
+						<span class="p-2 mt-2 badge text-off-white rounded-1">  
+						   <i class="fas fa-exclamation-triangle text-danger"></i> | Delete | <i class="fas fa-exclamation-triangle text-danger"></i>
+						</span>
+					</a>
                     
                 {% endfor %}
                 </div>
