@@ -88,7 +88,7 @@ def products_admin_hub(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners allowed here.')
         return redirect(reverse('home'))
-    
+
     if request.GET:
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
