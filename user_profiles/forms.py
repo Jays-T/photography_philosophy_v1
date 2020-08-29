@@ -12,7 +12,6 @@ class UserProfileForm(forms.ModelForm):
         """
         Autofocus set on first field
         Set Placeholders + Classes
-        Remove any auto-generated labels
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -33,4 +32,3 @@ class UserProfileForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'rounded-1 stripe-style-input'
-            self.fields[field].label = False

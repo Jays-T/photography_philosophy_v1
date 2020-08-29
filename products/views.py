@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import AdminProductForm
-
-# Create your views here.
 
 
 def all_products(request):
@@ -77,6 +76,7 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+@login_required
 def products_admin_hub(request):
     """Display Admin Product Hub"""
 
@@ -85,6 +85,10 @@ def products_admin_hub(request):
     categories = None
     form = AdminProductForm()
 
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners allowed here.')
+        return redirect(reverse('home'))
+    
     if request.GET:
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -102,11 +106,17 @@ def products_admin_hub(request):
     return render(request, template, context)
 
 
+@login_required
 def add_product(request):
     """
     View for Admin to handle product CRUD functions
     Add a product to the store
     """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Oops, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = AdminProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -127,9 +137,16 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
+
     product = get_object_or_404(Product, pk=product_id)
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Tsk tsk, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = AdminProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
@@ -152,8 +169,14 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Only store owners can do that!')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')

@@ -33,10 +33,13 @@
       </div>
    </div>
    <div class="row">
-      <div class="col-12 col-lg-6 text-center">
+      <div class="col-12 col-lg-6">
          <p class="text-off-white text-uppercase">Default Shipping Information</p>
          <form action="{% url 'profile' %}" method="POST" id="update-profile-form">
-            {% csrf_token %} {{ form|crispy }}
+            {% csrf_token %}
+            <small>
+            {{ form|crispy }}
+            </small>
             <button
                id="update-user-shipping-info-button"
                class="btn btn-outline-black rounded-1"
@@ -45,7 +48,7 @@
             </button>
          </form>
       </div>
-      <div class="col-12 col-lg-6 text-center">
+      <div class="col-12 col-lg-6">
          <p class="text-off-white text-uppercase">Order History</p>
          <div class="hide-on-mobile">
             <div class="row">
@@ -81,7 +84,7 @@
                </div>
                <div class="col-12 col-lg-5 order-hist-col">
                   <h6 class="show-on-mobile pt-3 text-off-white">Date</h6>
-                  <span class="p-2 mt-2 badge text-off-white rounded-1">
+                  <span class="p-2 mt-2 text-off-white rounded-1">
                   {{ order.date }}
                   </span>
                </div>
@@ -91,7 +94,7 @@
                      {% for item in order.lineitems.all %}
                      <li
                         title="{{ item.product.name }}"
-                        class="small p-2 mt-2 badge text-off-white rounded-1"
+                        class="small p-2 mt-2 text-off-white rounded-1"
                         >
                         {% if item.product.has_sizes %} Size {{ item.product.size|upper}} {% endif %} 
                         {{ item.product.name|truncatechars:8 }} x{{ item.quantity }}
@@ -101,7 +104,7 @@
                </div>
                <div class="col-12 col-lg-2 order-hist-col">
                   <h6 class="show-on-mobile text-off-white">Order Total</h6>
-                  <span class="p-2 mt-2 mb-3 badge text-off-white rounded-1">
+                  <span class="p-2 mt-2 mb-3 text-off-white rounded-1">
                   ${{ order.grand_total }}
                   </span>
                </div>

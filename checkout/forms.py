@@ -19,7 +19,6 @@ class OrderForm(forms.ModelForm):
         """
         Autofocus set on first field
         Set Placeholders + Classes
-        Remove any auto-generated labels
         """
         super().__init__(*args, **kwargs)
         placeholders = {
