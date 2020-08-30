@@ -71,21 +71,24 @@
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-1">
-                                {% if product.image %}
+        <!--Product Image-->
+                                {% if not product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid img-size-handle" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid img-size-handle" src="{{ product.image.url }}" 
+                                    onerror="this.onerror=null; this.src='{{ MEDIA_URL }}noimage.png'" alt="{{ product.name }}">
+                                <!--^ double check against product image to display image error image-->
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col-12">
+        <!-- Product Details-->
                                             <p class="mb-2">{{ product.name }}</p>
                                             {% if product.category %}
                                             <p class="small mt-1 mb-0">
@@ -103,6 +106,7 @@
                                             
                                         </div>
                                         <div class="col-12">
+        <!-- Product admin options edit/delete-->
                                             {% if request.user.is_superuser %}
                                             <a class="category-badge text-off-white" 
                                                 href="{% url 'edit_product' product.id %}">
@@ -122,6 +126,7 @@
                                 </div>
                             </div>
                         </div>
+        <!-- Set columns according to amount of products returned-->
                         {% if forloop.counter|divisibleby:1 %}
                             <div class="col-12 d-sm-none mb-5">
                                 <hr>
