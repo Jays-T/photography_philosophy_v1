@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -121,18 +120,11 @@ WSGI_APPLICATION = 'photography_philosophy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# Used for local development
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# Deployment database from Heroku
-
 DATABASES = {
-    'default': dj_database_url.parse('postgres://inlntgetsnonya:c5628da6c06a60a81c8a6839957c4e2f8da6c574ab18e852e4b3134b237fb8e8@ec2-54-75-244-161.eu-west-1.compute.amazonaws.com:5432/d6c9e011e02smi')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
