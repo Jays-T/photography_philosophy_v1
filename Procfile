@@ -1,0 +1,1 @@
+web: gunicorn photography_philosophy.wsgi:application
