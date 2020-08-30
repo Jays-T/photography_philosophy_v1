@@ -10,6 +10,7 @@ class TestIndex(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home/index.html')
 
+
 class TestViewCart(TestCase):
     """
     Test home view to ensure it renders correct template
