@@ -64,7 +64,7 @@
           <div class="col-12 my-auto">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
               <h1 class="logo-font logo-size text-black-strong my-0">
-                <img class="image-fluid mb-2" src="{{ MEDIA_URL }}favicon/favicon-32x32.png" /><strong>Lanthus</strong>Clark
+                <img class="image-fluid mb-2" src="{{ MEDIA_URL }}favicon/favicon-32x32.png" alt="icon" /><strong>Lanthus</strong>Clark
               </h1>
             </a>
           </div>
@@ -119,22 +119,6 @@
     {% endif %} {% block postloadjs %}
     <script>
       $(".toast").toast("show");
-
-      //  Working on best way to auto-close toast
-
-        // $( document ).ready(function(){
-        //     $(".toast").change("show", function(){
-        //         setTimeout(function(){
-        //             $(".toast").clear();
-        //         }, 4800);
-        //     });
-        // });
-
-    //   $(".toast").change('show', () => setTimeout(4800, $(".toast").clear()))
-
-    //   $(".toast").show('show', () => setTimeout(){
-    //       $(this).clear();
-    //   }, 4800);
     </script>
 
     {% endblock %}

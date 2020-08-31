@@ -16,12 +16,7 @@ def emailsend(request):
             send_mail(subject, message, from_email,
                       ['photography.philosophy.lc.com@gmail.com'])
             messages.success(request, 'Success! Thank you for your message.')
+
         except BadHeaderError:
             messages.error(request, 'Invalid header found.')
     return redirect('contact')
-
-
-def success(request):
-
-    template = 'home/contact.html'
-    return render(request, template)

@@ -162,15 +162,6 @@ li .dropdown-item:hover,
     }
 }
 
-
-/* input:hover,
-input:active,
-input:focus,
-input::after {
-    background: rgba(216, 221, 221, 0.2)!important;
-    color: #faebd7 !important;
-} */
-
 .free-shipping-alert {
     background: #17a2b8 !important;
 }

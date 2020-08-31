@@ -1,4 +1,5 @@
-# Core logic and much of this code adapted from Code Institute Boutique Ado project
+# Core logic and much of this code adapted from
+# Code Institute Boutique Ado project
 
 from django.http import HttpResponse
 from django.core.mail import send_mail

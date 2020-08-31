@@ -1,6 +1,5 @@
 {% extends "base.html" %} 
 {% load static %} 
-{% load bag_tools %}
 
 {% block page_header %}
 <div class="header-container">
@@ -165,25 +164,26 @@
                 {% endfor %}
                 <p class="text-off-white small mt-0 mb-1">Products in category</p>
                <div class="d-flex flex-column">
-               {% for p in products%}
-                <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ p.name }}</span>
+               {% for product in products %}
+                <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ product.name }}</span>
                     <div class="row">
                     <div class="col-6">
-                    <a class="btn btn-warning w-100 text-decoration-none mt-2" 
-                       href="{% url 'edit_product' p.id %}">
+                    <a id="delete-product" class="btn btn-warning w-100 text-decoration-none mt-2" 
+                       href="{% url 'edit_product' product.id %}">
                        <span class="p-2 mt-2 w-100 text-black rounded-1">
-                        Edit</span>
+                        <i class="far fa-edit fa-lg"></i></span>
                     </a>
                     </div>
                     <div class="col-6">
-                    <a class="btn btn-danger w-100 remove-item mt-2"
-                        href="{% url 'delete_product' p.id %}">
+                    <a class="btn btn-danger w-100 remove-item mt-2" data-toggle="modal" data-target="#confirmDeleteModal"
+                        >
 						<span class="p-2 mt-2 w-100 text-black rounded-1">  
-						Delete
+						<i class="far fa-trash-alt fa-lg"></i>
 						</span>
 					</a>
                     </div>
                     </div>
+                    {% include 'includes/confirm_delete_modal.html' %}
                 <hr class="my-0 mt-1 mb-1">
                 {% endfor %}
                 </div>
@@ -196,6 +196,7 @@
    </div>
    <hr class="my-0 mt-1 mb-1">
 </div>
+
 {% endblock %}
 
 {% block postloadjs %}

@@ -90,6 +90,7 @@
                                         <div class="col-12">
         <!-- Product Details-->
                                             <p class="mb-2">{{ product.name }}</p>
+                                            
                                             {% if product.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
@@ -105,21 +106,34 @@
                                             <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                                             
                                         </div>
+                                        
                                         <div class="col-12">
         <!-- Product admin options edit/delete-->
                                             {% if request.user.is_superuser %}
-                                            <a class="category-badge text-off-white" 
-                                                href="{% url 'edit_product' product.id %}">
+                                            <small class="d-block text-dark">Admin Options</small>
+                                            <a class="category-badge text-off-white"
+                                                    title="Add Product" 
+                                                    href="{% url 'products_admin_hub' %}">
 													<span class="p-2 badge text-off-white rounded-1 mt-2">
-													    <i class="far fa-edit"></i> | Edit
+													    <i class="far fa-plus-square"></i>
 													</span>
-												    </a>
-                                                    <a class="category-badge remove-item"
-                                                    href="{% url 'delete_product' product.id %}">
+												</a>
+                                                <a class="category-badge text-off-white" 
+                                                    title="Edit Product" 
+                                                    href="{% url 'edit_product' product.id %}">
+													<span class="p-2 badge text-off-white rounded-1 mt-2">
+													    <i class="far fa-edit text-warning"></i>
+													</span>
+												</a>
+                                                <a class="category-badge remove-item"
+                                                    title="Delete Product"
+                                                    data-toggle="modal" data-target="#confirmDeleteModal"
+                                                    >
 												    <span class="p-2 badge text-off-white rounded-1 mt-2">  
-													| Delete | <i class="fas fa-exclamation-triangle text-danger"></i>
+													<i class="fas fa-exclamation-triangle text-danger"></i>
 												</span>
 											</a>
+                                            {% include 'includes/confirm_delete_modal.html' %}
                                             {% endif %}
                                         </div>
                                     </div>

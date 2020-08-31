@@ -1,6 +1,6 @@
-# <a href="#">Lanthus Clark</a>
+# Photography Philosophy deployed via Heroku at <a href="https://photography-philosophy.herokuapp.com/">LanthusClark.com</a>
 
-* This project is currently purely for educational purposes.
+* This project in its current state is purely for educational purposes. 
 
 # CONTENTS
 
@@ -28,13 +28,9 @@
 
 # Owner Goals
 
-#### As the owner, my initial goals are:
+#### As the owner, my goals are:
 
-* 
-
-#### Long-term goals for the owner are:
-
-* 
+* To showcase my photography skills and generate income
 
 # User Goals
 
@@ -44,14 +40,41 @@
 
 # User Stories
 
-1. "As a **Photography enthusiast** "
-2. "As a **Random User** "
-3. "As a **Fan of the Site Owner** "
+1. "As a **Photography enthusiast** I'm interested in browsing the photography sites and having the images presented in a clear way"
+2. "As a **Random User** I want to understand as fast as possible what this site can offer me"
+3. "As a **Fan of the Site Owner** I want to browse his collection of photos and possibly purchase a print or two"
+4. "As a user I want to have:
+..* Non-login checkout
+..* To see my items in my basket
+..* To be able to search the site
+..* I want to have a smooth buying experience
+..* I want to be notified about my actions while on the site
+..* I want to clearly see how much I'm spending
+..* I want to be informed of any possible shippping costs 
+..* I would like to be able to register an account
+..* I want to be able to save my shipping address for future use
+
 
 
 # My Strategy
 
-*
+* For this project I focussed primarily on the backend. This involved a lot of learning as the project developed.
+* I did some initial wireframes for the landing page and how I wanted to setup the products display.
+* I planned on using a simple card scheme that I had seen used on other sites as well as the Boutique Ado project from Code Institute
+* I relied heavily on the Boutique Ado project while developing this project. I found that many times the reason that my code wasn't working
+* was due to a small typo, or forgetting to add a path to the urls.py etc. 
+
+* While the backend was my priority I did not want to skimp on the front end either, though in the end perhaps the admin_hub didn't quite realise
+* the full scope of what I had hoped to present with this project.
+
+## Seperate Branches 
+
+* Midway through the project I received feedback on my previous milestone with this excellent suggestion: "The next step of progress should be using separate branches for each feature implemented."
+* I realised that I had already implemented quite a few features, but I began using seperate branches for each feature straight away.
+* Using seperate branches saved me when about 70% through the project I was testing adding/deleting products in the Admin. I deleted one product and my database corrupted
+* Some of the work I had done on the seperate branch was gone after this happened. 
+* I was able to recover the project because I was working on a seperate branch and while unfortunately I had to delete the database and re-add all the products
+* Most of the project was still there and safe in the Master branch.
 
 # Structure
 
@@ -63,39 +86,116 @@
 
 <img src="/media/wireframes/milestone_4_wireframes.png"/>
 
-* 
+* I didn't want to go full greyscale, but I also wanted to use lighter/calmer colors to allow the images that I would be using for the project to really pop against the background.
+* I went with a light blue/green background
+* For badges and the navigation area I went with a semi-transparent background
+* I didn't want a thick border, and 1 px was too thick for what I wanted so I wrapped most of the elements with a very thin box-shadow to give the appearance of a thin border.
+
 * Fonts
 
-  * 
+  * I used Lato for the site font
 
 # Features
+## And who can use them
 
-- [x] Register User Account
+Admin/Superuser
+
+- [x] Everything regular users can do plus:
+- [x] Access Admin Hub
+- [x] View at a glance how many Categories and Products there are Site Wide
+- [x] See how many Products in each Category
+- [x] Add a Category (Can only be done via the Backend /Admin)
+
+- (Accessible via Products and Product Details and Admin_Hub, but action can only be done via the Admin_Hub)
+
+- [x] Add a Product
+- [x] Edit a Product
+- [x] Delete a Product (Can be done via any of Products/Product_Details/Admin_Hub after confirmation click 'Yes' on delete confirmation modal)
+
+Regular User
+
+- [x] Shop and make a purchase without having to register an account
+- [x] Register an account
+- [x] Login
+- [x] View Order History
+- [x] View Details of each order
+- [x] View Full Summary of each order including date/time order was placed
+- [x] Add/Update their default shipping address
+- [x] Send an email to the store owner
+- [x] Browse Items
+- [x] Search for Items
+- [x] Search by Price/Rating
+- [x] Sort Items by Name/A-Z/Z-A
+- [x] Sort By Price Low to High
+- [x] Sort By Price High to Low
+- [x] Sort By Category A-Z 
+- [x] Sort By Category Z-A
+- [x] Navigate directly to specific Category (Through the Shop link in Navbar)
+- [x] Add Items to cart 
+- [x] Add multiples of one Item if they want
+- [x] Select sizes on Items that have sizes
+- [x] See the cart total cost of all their selected Items at any time
+- [x] Adjust how many Items are in their cart
+- [x] Adjust how many of each Item is in their cart
+- [x] Remove Items from their cart
+- [x] See a summary of their order before completing the order
+- [x] See a grand total for their including shipping costs (if any)
+- [x] See how much more they would have to spend to get free shipping (if the order total is below the threshold to trigger free shipping)
+- [x] See a final warning regarding how much money will be charged to their card before confirming and completing the order
+- [x] Get a notification when a successful order has gone through
+- [x] Get an email with an order summary sent to them on completion of a successful order
+- [x] Get notification when something goes working
 - [x] 
-- [x] 
-- [x] 
-- [x] 
+
+
+
 
 # Features still to implement
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] See notification on successful email sent to owner
+- [ ] Be able to rate items ()
 - [ ] 
 
 
 
 # Scope
 
-* This is a fully functional web store
+* This is a fully functional web store with Stripe in Test Mode
+* No purchases from this version will be either charged or redeemed
 
 # Information Architecture
 
-* 
+* <img src="media/wireframes/L_C_Photography_DB_Schema.png"/>
 
 # Defensive Design
 
-* 
+* Defensive Design was implemented using Webhooks and Python Decorators from Django
+
+## Checkout
+* Webhook handlers were setup to handle generic events, send confirmation emails on payment intent succeeding with stripe, failures and possible user errors.
+
+On an order, the handler will first clean any data in shipping_details. This is to ensure that if the user has updated their shipping details in the form, the app will correctly populate the shipping_details.
+If the user has selected 'save info' the webhandler will check if it is an anonymous user,
+If the user has an account and is not 'anonymous' the information in the form will be saved to that users account.
+
+The handler will then set order exists to false and try to get the order details:
+* shipping details from the form
+* item details from the bag/cart
+* payment intent from stripe input
+
+It will try 5 times to do this with a 1 second delay between tries.
+If the order exists it will trigger the confirmation email, send a HTTP response of 200
+
+If this does not succeed then it will set order to none and attempt to pull the order from the cache
+If this fails it will cancel the payment intent and send a HTTP response of 500 to stripe
+
+If however it is successful in populating the order from the cache it will trigger the confirmation email and send a HTTP response of 200 to Stripe
+
+## Add/Edit/Delete
+
+Using Python decorator of @require_login
+Also the Add/Edit/Delete functions are only available to SuperUsers. A SuperUser can only be created by Admin or another SuperUser
+
 
 # Technologies
 
