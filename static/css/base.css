@@ -30,12 +30,12 @@ body {
 
 }
 
-.searchBox:hover > .searchInput {
+.searchBox:before > .searchInput {
     width: 240px;
     padding: 0 6px;
 }
 
-.searchBox:hover > .searchButton {
+.searchBox:after > .searchButton {
   background: white;
   color : #2f3640;
 }
