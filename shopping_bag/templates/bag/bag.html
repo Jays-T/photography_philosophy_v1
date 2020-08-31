@@ -122,12 +122,12 @@
 							<div class="col-12">
 								<h6 class="show-on-mobile pt-3">Qty:</h6>
 								<hr class="show-on-mobile">
-									<p class="w-15">
+									        <p class="w-15">
 <!-- Form to update Item amount -->
-										<form class="d-inline-block form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
-                                            {% csrf_token %}
+										        <form class="d-inline-block form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
+                                                {% csrf_token %}
                     
-											<div class="form-group">
+											    <div class="form-group">
 												<div class="input-group">
 													<div class="input-group-prepend">
 														<button class="decrement-qty btn btn-sm btn-black rounded-left-1"

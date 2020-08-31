@@ -3,6 +3,11 @@
 {% load static %} 
 
 {% block page_header %}
+<div class="header-container">
+	<div class="row bg-transparent">
+		<div class="col"></div>
+	</div>
+</div>
 {% endblock %} {% block content %}
 <div class="overlay"></div>
 <div class="container">
@@ -19,7 +24,7 @@
       <div class="card h-80 border-1">
         <img
           class="card-img-top img-fluid"
-          src="{{ MEDIA_URL }}portrait_lanthus_clark_small.jpg"
+          src="{{ MEDIA_URL }}favicon_transparent.png"
           onerror="this.onerror=null; this.src='{{ MEDIA_URL }}noimage.png'"
           alt="Lanthus Clark"
         />

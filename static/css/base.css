@@ -5,7 +5,7 @@ html {
 body {
     background: url('/media/portrait_lanthus_clark_1600x1087.png') no-repeat center center fixed;
     background-size: cover;
-    /* height: calc(100vh - 184px); */
+    height: 100%;
     color: #555;
     font-size: 18px;
     font-family: 'Lato';
@@ -47,7 +47,7 @@ body {
 }
 
 .main-content {
-    min-height: calc(100vh - 30.5vh);
+    min-height: calc(100% - 28.5vh);
     max-width: 98vw !important;
     overflow-x: hidden;
     overflow-y: auto;
@@ -178,6 +178,15 @@ li .dropdown-item:hover,
     border-radius: 5px !important;
 }
 
+.border-circle {
+    border-radius: 50%;
+    color: #17a2b8;
+}
+
+.account-icon-color-logged {
+    color: #17a2b8;
+}
+
 .nav-edge-glow,
 .badge {
         background: rgba(10, 32, 39, 0.6);
@@ -217,8 +226,9 @@ li .dropdown-item:hover,
 
 #footer {
   position: absolute;
+  overflow: hidden;
   bottom: 0 !important;
-  height: 3.5rem;
+  height: 5vh;
 }
 
 /* Product Form */
@@ -360,13 +370,12 @@ li .dropdown-item:hover,
     }
 
     body {
-        /* height: calc(100vh - 126px); */
         font-size: 16px;
     }
 
-    .top-margin {
+    /* .top-margin {
     margin-top: 18vh;
-    }
+    } */
 
     .show-on-mobile {
     margin: 0;

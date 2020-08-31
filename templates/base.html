@@ -71,7 +71,7 @@
         </div>
       </div>
       <nav
-        class="navbar navbar-expand-md navbar-light w-100 bg-transparent rounded-border nav-edge-glow"
+        class="navbar navbar-expand-lg navbar-light w-100 bg-transparent rounded-border nav-edge-glow"
       >
         {% include 'includes/main-nav.html' %} 
         {% include 'includes/nav-and-mobile-icons.html' %}
@@ -103,20 +103,14 @@
     {% if '/' == request.path %} {% else %}
     <footer class="footer nav-edge-glow mt-3">
       <div class="row">
-        <div class="col-12 bg-transparent rounded-top">
-          <div class="row">
-            <div class="col-4 text-off-white text-left">
-              <p>(c)Lanthus Clark</p>
-            </div>
-            <div class="col-4 text-off-white text-center">
-              <p>Site by Jays-T</p>
-            </div>
-            <div class="col-4 text-off-white text-right"><p>Wololo</p></div>
-          </div>
+        <div class="col-12 bg-transparent rounded-toptext-off-white text-left">
+              <p class="d-inline-block p-2 mt-2"><i class="far fa-copyright"></i>Photography Philosophy</p>
+              <p class="d-inline-block p-2 mt-2 badge">Site by Jays-T</p>
         </div>
       </div>
     </footer>
-    {% endif %} {% block postloadjs %}
+    {% endif %} 
+    {% block postloadjs %}
     <script>
       $(".toast").toast("show");
     </script>

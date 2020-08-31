@@ -152,9 +152,9 @@ Regular User
 
 # Features still to implement
 
-- [ ] See notification on successful email sent to owner
-- [ ] Be able to rate items ()
-- [ ] 
+- [ ] Show notification to user on successful email sent to owner
+- [ ] Be able to rate items
+- [ ] Be able to leave reviews on items purchased
 
 
 
@@ -203,29 +203,58 @@ Also the Add/Edit/Delete functions are only available to SuperUsers. A SuperUser
 * <a href="https://css-tricks.com/" target="_blank">Css</a> - to style the site
 * <a href="https://www.getbootstrap.com" target="_blank">Bootstrap 4.5.0</a> - for grid structure and responsive design
 * <a href="https://www.fontawesome.com" target="_blank">Font Awesome</a> - for icons
-* <a href="#" target="_blank">Django</a> - as my framework
+* <a href="https://www.djangoproject.com/" target="_blank">Django</a> - as my framework
 * <a href="https://www.python.com" target="_blank">Python</a> - for app routes and CRUD functionality
 * <a href="https://jinja.palletsprojects.com/en/2.11.x" target="_blank">Jinja</a> - for templating, data routing and page information populating
-* <a href="https://mongodb.com" target="_blank">MongoDB</a> - for the Database
+* <a href="https://heroku.com" target="_blank">PostgreSQL from Heroku</a> - for the deployment Database and sqlite3 from Django for development
 * <a href="https://www.jquery.com/" target="_blank">jQuery</a> - used by Bootstrap and for various site actions
 * <a href="https://www.gitpod.io/" target="_blank">Gitpod</a> - as my development environment
 * <a href="https://www.github.com/" target="_blank">GitHub</a> - for version control
 * <a href="https://www.heroku.com" target="_blank">Heroku</a> - for deployment
+* <a href="https://www.aws.com" target="_blank">AWS</a></a> - Amazon Web Services for hosting 'static' and 'media' files
 
+## Technologies installed
+
+asgiref==3.2.10
+boto3==1.14.51
+botocore==1.17.51
+dj-database-url==0.5.0
+Django==3.0.8
+django-allauth==0.42.0  -> For User Authentication
+django-countries==6.1.3  -> For Country Selector on Forms
+django-crispy-forms==1.9.2  -> For Forms
+django-storages==1.9.1  
+docutils==0.15.2
+gunicorn==20.0.4  -> To setup application for deployment to Heroku
+jmespath==0.10.0
+oauthlib==3.1.0
+Pillow==7.2.0
+psycopg2-binary==2.8.5
+python3-openid==3.2.0
+pytz==2020.1
+requests-oauthlib==1.3.0
+s3transfer==0.3.3
+sqlparse==0.3.1   -> Parse/Format/Split sql statements
+stripe==2.50.0  ->  Stripe Payments
 
 # Sources
 
 * <a href="https://www.w3schools.com">w3schools</a> - For general knowledge or whenever I was stuck on something simple
-* <a href="https://docs.mongodb.com/">MongoDB Docs</a> - for questions relating to database interaction
+* Combed through the <a href="https://docs.djangoproject.com/en/3.1/">Django Docs</a> 99% of the time when stuck with the other 99% of the time referring back to Code Institue Boutique Ado project
 * <a href="https://css-tricks.com/">Css Tricks</a> - to solve styling and element placement issues
 * <a href="https://fonts.google.com/">Google Fonts</a> - for fonts
+* <a href="https://fontawesome.com/">Font Awesome</a> - for Icons
 
 # Testing
 
 * Testing was done regularly throughout the entire process 
 * Each function was tested and re-tested
 * Defensive Design was tested by manually adding endpoints from areas where access should not be allowed
+* Testing done on checkouts/logins/logouts/admin_hub/profile using back and forward buttons, manually adding endpoints and urls
 * Site navigation and links tested thoroughly, navigation breaks also tested using the back and forward buttons
+
+* I began writing tests for the project but due to unforseen circumstances I ran out of time and only have 2 views tests in the home app simply asserting that the views return the correct template
+* And one forms test in the checkout app making sure the relevant fields are set to required
 
 * All HTML validated with <a href="https://validator.w3.org/">w3 validator</a>
   * The HTML validator returned errors due to the jinja templating used to structure the site
@@ -239,7 +268,7 @@ Also the Add/Edit/Delete functions are only available to SuperUsers. A SuperUser
 * <a href="https://esprima.org/demo/validate.html">Esprima JavaScript Checker</a>
 * <a href="https://jshint.com/">JsHint JavaScript Checker</a>
 
-## This site has been tested manually
+## This site has been tested manually by myself, friends, my mentor and fellow students at Code Institute
 
 Browsers tested: 
 * Chrome
@@ -260,7 +289,10 @@ Phones tested:
 # Bugs
 
 **Major Bugs**
-* 
+* There was a major bug with the delete product function which caused all the products to be deleted instead of only one.
+* This bug was caught during testing and has been removed/fixed.
+
+No further bugs were detected during testing 
 
 # Deployment
 
@@ -301,7 +333,7 @@ To clone this project from GitHub:
   2. In your local IDE open Git Bash.
   3. Change the current working directory to the location where you want the cloned directory to be made.
   4. Type git clone, and then paste the URL you copied in Step 3.
-  5. The command should look like this:  git clone https://github.com/Jays-T/the-band-room.git
+  5. The command should look like this:  git clone https://github.com/Jays-T/photography_philosophy_v1.git
   6. Press enter and your local clone will be created and the response should be something like this:
 > * $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 > * Cloning into `Spoon-Knife`...
@@ -313,10 +345,32 @@ To clone this project from GitHub:
 
   7. Technologies to install
 
+- [x] asgiref==3.2.10
+- [x] boto3==1.14.51
+- [x] botocore==1.17.51
+- [x] dj-database-url==0.5.0
+- [x] Django==3.0.8
+- [x] django-allauth==0.42.0
+- [x] django-countries==6.1.3
+- [x] django-crispy-forms==1.9.2
+- [x] django-storages==1.9.1
+- [x] docutils==0.15.2
+- [x] gunicorn==20.0.4
+- [x] jmespath==0.10.0
+- [x] oauthlib==3.1.0
+- [x] Pillow==7.2.0
+- [x] psycopg2-binary==2.8.5
+- [x] python3-openid==3.2.0
+- [x] pytz==2020.1
+- [x] requests-oauthlib==1.3.0
+- [x] s3transfer==0.3.3
+- [x] sqlparse==0.3.1
+- [x] stripe==2.50.0
+
 # To preview in your browser
 
 If you are using gitpod as your IDE:
-The project runs only from the Master branch the main directory of which is:  /workspace/the-band-room
+The project runs only from the Master branch the main directory of which is:  /workspace/photography_philosophy_v1
 When in the main directory enter the following into the terminal command prompt
 1. python3 manage.py runserver
 2. This will run the contents of the directory on a local web server, on port 8080.
@@ -329,7 +383,7 @@ When in the main directory enter the following into the terminal command prompt
 **Code**
 
 * Major credits go to <a href="https://github.com/ckz8780" target="_blank">Chris Zielinski</a> and the <a href="https://github.com/ckz8780/boutique_ado_v1" target="_blank">Boutique Ado Project</a>
-* I referred to the above project many times during this process
+* I referred to the above project many times during this process and a large part of the coding logic was adapted from this project
 
 
 ## Content
@@ -343,9 +397,10 @@ When in the main directory enter the following into the terminal command prompt
 
 ## Acknowledgements
 
-## Thank you to my mentor **@rheyannmagcalas_mentor** for her advice given througout my journey with Code Institute
-## Thank you to Niel from StudentCare at Code Institute for his advice on CRUD functionality and making sure the basics are done right.
+## Thank you to my mentor **@rheyannmagcalas_mentor** for your advice given througout my journey with Code Institute
 ## Thank you to h4xnoodle for your advice and consistently reminding me not to overcomplicate things.
+## Thank you to Charlie and JimLynx for your advice and moral support
+## Thank you to O-Bim-Wan-Kenobi - the Mr Bim for his sage advice on development practice, UI and UX design and logic and for your encouragement and willingness to spend your time listening and helping
 
 ## Thank you to all the staff at Code Institute - From the instructors to the mentors, the people in slack who give of their time each day to help and advise us who are learning,
 ## to those creating the course material to those crafting the UX to those constructing and developing the backend. Thank you so much!
