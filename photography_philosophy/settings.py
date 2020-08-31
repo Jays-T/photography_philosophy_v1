@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_countries',
     'user_profiles',
     'storages',
+    'sendemail.apps.SendemailConfig',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +108,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+ACCOUNT_USERNAME_MAX_LENGTH = 9
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/products/'
 

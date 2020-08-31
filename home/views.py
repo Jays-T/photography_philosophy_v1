@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from sendemail.forms import ContactForm
 
 
 def index(request):
@@ -16,4 +17,9 @@ def about(request):
 def contact(request):
     """ A view to return contact page """
 
-    return render(request, 'home/contact.html')
+    form = ContactForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'sendemail/email.html', context)
+
