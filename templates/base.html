@@ -10,7 +10,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+    {% endblock %} 
+    
+    {% block extra_meta %} 
+    {% include 'includes/favicon.html' %}
+    {% endblock %} 
+    
+    {% block corecss %}
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -58,30 +64,35 @@
           <div class="col-12 my-auto">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
               <h1 class="logo-font text-black-strong my-0">
-                <strong>Lanthus</strong>Clark
+                <img class="image-fluid mb-1" src="{{ MEDIA_URL }}favicon/android-icon-48x48.png" /><strong>Lanthus</strong>Clark
               </h1>
             </a>
           </div>
         </div>
       </div>
-              <nav class="navbar navbar-expand-md navbar-light w-100 bg-transparent rounded-border nav-edge-glow">
-                    {% include 'includes/main-nav.html' %}
-                    {% include 'includes/nav-and-mobile-icons.html' %}
-
-              </nav>
+      <nav
+        class="navbar navbar-expand-md navbar-light w-100 bg-transparent rounded-border nav-edge-glow"
+      >
+        {% include 'includes/main-nav.html' %} 
+        {% include 'includes/nav-and-mobile-icons.html' %}
+      </nav>
     </header>
 
     {% if messages %}
     <div class="message-container">
       <strong>
         {% for message in messages %} 
-            {% with message.level as level %} 
-                {% if level == 40 %} {% include 'includes/toasts/toast_error.html' %} 
-                    {% elif level == 30 %} {% include 'includes/toasts/toast_warning.html' %} 
-                        {% elif level == 20 %} {% include 'includes/toasts/toast_info.html' %} 
-                    {% else %} {% include 'includes/toasts/toast_success.html' %} 
-                {% endif %}
-            {% endwith %} 
+        {% with message.level as level %} 
+        {% if level == 40 %} 
+            {% include 'includes/toasts/toast_error.html' %} 
+        {% elif level == 30 %} 
+            {% include 'includes/toasts/toast_warning.html' %} 
+        {% elif level == 20 %} 
+            {% include 'includes/toasts/toast_info.html' %} 
+        {% else %} 
+            {% include 'includes/toasts/toast_success.html' %} 
+        {% endif %}
+        {% endwith %} 
         {% endfor %}
       </strong>
     </div>
@@ -106,7 +117,7 @@
       </div>
     </footer>
     {% endif %} {% block postloadjs %}
-    <script type="text/javascript">
+    <script>
       $(".toast").toast("show");
     </script>
 

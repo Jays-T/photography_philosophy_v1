@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %} {% block page_header %}
+<div class="header-container">
+  <div class="row bg-transparent">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <hr />
+      <h2 class="logo-font mb-4 text-off-white">Get in Touch</h2>
+      <hr />
+    </div>
+  </div>
+  <div class="row">
+    <!--Contact Section-->
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card h-80 border-1">
+        <img
+          class="card-img-top img-fluid"
+          src="{{ MEDIA_URL }}portrait_lanthus_clark_small.jpg"
+          onerror="this.onerror=null; this.src='{{ MEDIA_URL }}noimage.png'"
+          alt="Lanthus Clark"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-8 mb-3 text-off-white">
+    <p>Keeping this search animation here for now.</p>
+
+                    <div class="text-center">
+                        <div class="search">
+                            <div>
+                                <input 
+                                class="form-control"
+                                type="text"
+                                name="q"
+                                placeholder="Search our site" />
+                            </div>
+                        </div>
+                    </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block postloadjs %} {% endblock %}

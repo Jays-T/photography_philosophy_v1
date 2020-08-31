@@ -2,10 +2,6 @@
 {% load static %} 
 {% load bag_tools %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% endblock %}
-
 {% block page_header %}
 <div class="header-container">
    <div class="row bg-transparent">
@@ -44,7 +40,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="addNew">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#collapseOne" 
                               aria-expanded="true" 
@@ -65,6 +61,7 @@
                                 {{ field }}
                                 {% endif %}
                               {% endfor %}
+                              <span class="text-off-white" id="image-text"></span>
                               <div class="text-right">
                                  <a class="btn btn-outline-black rounded-1" href="{% url 'products_admin_hub' %}">Cancel</a>
                                  <button class="btn btn-black rounded-1" type="submit">Add Product</button>
@@ -78,7 +75,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="editProduct">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#collapseTwo"
                               aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
@@ -113,7 +110,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="editInstruct">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#instruct"
                               aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
@@ -131,24 +128,6 @@
                      </div>
                   </div>
                   {% endif %}
-                  <div class="card nav-edge-glow mb-2">
-                     <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                           <button class="btn btn-outline-black rounded-1 collapsed" 
-                              data-toggle="collapse" 
-                              data-target="#collapseThree" 
-                              aria-expanded="false" 
-                              aria-controls="collapseThree">
-                           Remove
-                           </button>
-                        </h5>
-                     </div>
-                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                           third
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>
@@ -190,18 +169,17 @@
                 <span class="p-2 mt-2 badge text-off-white rounded-1 bg-transparent">{{ p.name }}</span>
                     <div class="row">
                     <div class="col-6">
-                    <a class="category-badge text-decoration-none" 
+                    <a class="btn btn-warning w-100 text-decoration-none mt-2" 
                        href="{% url 'edit_product' p.id %}">
-                       <span class="p-2 mt-2 badge w-100 text-off-white rounded-1">
-                        <i class="fas fa-sort-up fa-sm pr-2"></i>Edit<i class="fas fa-sort-up fa-sm pl-2">
-                       </i></span>
+                       <span class="p-2 mt-2 w-100 text-black rounded-1">
+                        Edit</span>
                     </a>
                     </div>
                     <div class="col-6">
-                    <a class="remove-item category-badge"
+                    <a class="btn btn-danger w-100 remove-item mt-2"
                         href="{% url 'delete_product' p.id %}">
-						<span class="p-2 mt-2 badge w-100 text-off-white rounded-1">  
-						   <i class="fas fa-exclamation-triangle text-danger"></i> | Delete | <i class="fas fa-exclamation-triangle text-danger"></i>
+						<span class="p-2 mt-2 w-100 text-black rounded-1">  
+						Delete
 						</span>
 					</a>
                     </div>
@@ -221,4 +199,10 @@
 {% endblock %}
 
 {% block postloadjs %}
+<script>
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+</script>
 {% endblock %}

@@ -36,7 +36,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" 
+            <a href="{% url 'about' %}" 
             class="{% if '/about/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-3" 
             id="about-link" 
             aria-haspopup="false" 
@@ -46,7 +46,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" 
+            <a href="{% url 'contact' %}" 
             class="{% if '/contact/' == request.path %}active {% endif %}logo-font font-weight-bold nav-link text-off-white mr-3" 
             id="contact-link" 
             aria-haspopup="false" 
