@@ -58,13 +58,13 @@
   <body>
     <header class="fixed-top">
       <div
-        class="{% if '/' == request.path %}container top-padding-index-navbar {% else %} {% endif %}h-100"
+        class="{% if '/' == request.path %}top-padding-index-navbar {% else %} {% endif %}h-100"
       >
         <div class="row h-100">
           <div class="col-12 my-auto">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
-              <h1 class="logo-font text-black-strong my-0">
-                <img class="image-fluid mb-1" src="{{ MEDIA_URL }}favicon/android-icon-48x48.png" /><strong>Lanthus</strong>Clark
+              <h1 class="logo-font logo-size text-black-strong my-0">
+                <img class="image-fluid mb-2" src="{{ MEDIA_URL }}favicon/favicon-32x32.png" /><strong>Lanthus</strong>Clark
               </h1>
             </a>
           </div>

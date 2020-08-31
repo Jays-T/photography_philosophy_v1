@@ -15,59 +15,7 @@ body {
     overflow-y: auto;
 }
 
-/* Testing Search bar */
 
-.search {
-  margin: 20px;
-}
-
-.search > div {
-  display: inline-block;
-  position: relative;
-}
-
-.search > div:after {
-  content: "";
-    background: antiquewhite;
-    width: 3px;
-    height: 12px;
-    position: absolute;
-    border: solid 2px antiquewhite;
-    border-radius: 2px;
-    top: 17px;
-    right: -2px;
-    transform: rotate(135deg);
-}
-
-.search > div > input {
-  color: white;
-  font-size: 16px;
-  background: transparent;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
-  border: solid 3px white;
-  outline: none;
-  border-radius: 35px;
-  transition: width 0.5s;
-}
-
-.search > div > input::placeholder {
-  color: #efefef;
-  opacity: 0;
-  transition: opacity 150ms ease-out;
-}
-
-.search > div > input:focus::placeholder {
-  opacity: 1;
-}
-
-.search > div > input:focus,
-.search > div > input:not(:placeholder-shown) {
-  width: 300px;
-}
-
-/* End of Search bar */
 
 .main-nav-margin-left {
     margin-left: 10.1vw;
@@ -209,7 +157,6 @@ input::after {
 
 .free-shipping-alert {
     background: #17a2b8 !important;
-
 }
     
 .nav-item .active {
@@ -308,8 +255,8 @@ input::after {
 
 .message-container {
     position: fixed;
-    top: 122px;
-    right: 22px;
+    top: 20vh;
+    right: 12vw;
     z-index: 99999999999;
     animation-name: fadeIn;
     animation-duration: 0.8s;
@@ -440,7 +387,18 @@ input::after {
 
 @media (max-width: 764px) {
     nav li p,
+    .logo-size,
     .nav-item {
         font-size: 0.75em;
     }
+}
+
+@media (max-width: 440px) {
+    .main-nav-margin-left {
+    margin-left: 0;
+}
+
+.main-nav-margin-right {
+    margin-right: 0;
+}
 }
