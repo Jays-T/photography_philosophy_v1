@@ -78,7 +78,7 @@
 
 # Structure
 
-<img src="#"/>
+<img src="https://photography-philosophy.s3.eu-north-1.amazonaws.com/media/wireframes/L_C_Photography_DB_Schema.png"/>
 
 # User Interface
 
@@ -153,6 +153,7 @@ Regular User
 # Features still to implement
 
 - [ ] Show notification to user on successful email sent to owner
+- [ ] Wire up the email app to get the UserProfile email address and populate the form with the email automatically
 - [ ] Be able to rate items
 - [ ] Be able to leave reviews on items purchased
 
