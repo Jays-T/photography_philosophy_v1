@@ -119,6 +119,22 @@
     {% endif %} {% block postloadjs %}
     <script>
       $(".toast").toast("show");
+
+      //  Working on best way to auto-close toast
+
+        // $( document ).ready(function(){
+        //     $(".toast").change("show", function(){
+        //         setTimeout(function(){
+        //             $(".toast").clear();
+        //         }, 4800);
+        //     });
+        // });
+
+    //   $(".toast").change('show', () => setTimeout(4800, $(".toast").clear()))
+
+    //   $(".toast").show('show', () => setTimeout(){
+    //       $(this).clear();
+    //   }, 4800);
     </script>
 
     {% endblock %}

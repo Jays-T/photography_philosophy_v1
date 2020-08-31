@@ -18,7 +18,7 @@
 <div class="overlay"></div>
 <div class="container">
    <div class="row">
-      <div class="col">
+      <div class="col text-center mt-3">
          <hr />
          <h2 class="logo-font mb-4 text-off-white">Profile: <span class="text-user badge rounded-border">{{ user.username }}</span></h2>
          <hr />
@@ -29,7 +29,12 @@
 <section name="user-profile-info" class="container">
    <div class="row">
       <div class="col-12 col-lg-6 text-off-white">
-         <h5>Schmolololo</h5>
+        <a class="category-badge text-off-white text-decoration-none" 
+           href="{% url 'products' %}">
+            <i class="fas fa-long-arrow-alt-left"></i>
+            <span class="badge bg-transparent rounded-border p-2 mb-4"> Shop
+            </span>
+        </a>
       </div>
    </div>
    <div class="row">

@@ -6,7 +6,7 @@
 
 {% block inner_content %}
     <hr>
-    <h2 class="logo-font mb-4">{% trans "E-mail Addresses" %}</h2>
+    <h2 class="logo-font mb-4 text-off-white">{% trans "E-mail Addresses" %}</h2>
     <hr>
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
@@ -32,7 +32,7 @@
 </div>
   {% endfor %}
 
-<div class="buttonHolder">
+<div class="buttonHolder text-off-white">
       <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
       <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
       <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
@@ -42,7 +42,7 @@
 </form>
 
 {% else %}
-<p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
+<p class="text-off-white"><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
 
 {% endif %}
 

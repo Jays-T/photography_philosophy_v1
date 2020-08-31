@@ -8,17 +8,17 @@
 {% block inner_content %}
 
 <hr>
-<h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
+<h2 class="logo-font mb-4 text-off-white">{% trans "Sign In" %}</h2>
 <hr>
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
+<p class="text-off-white">{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
 for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-<div class="socialaccount_ballot">
+<div class="socialaccount_ballot text-off-white">
 
   <ul class="socialaccount_providers">
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
@@ -31,11 +31,11 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+<p class="text-off-white">{% blocktrans %}If you have not created an account yet, then please
+<a class="text-dark" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<form class="login text-off-white" method="POST" action="{% url 'account_login' %}?next=/profile/">
   {% csrf_token %}
   {{ form|crispy }}
   {% if redirect_field_value %}
@@ -44,7 +44,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <a class="btn btn-outline-black rounded-1 text-dark" href="{% url 'home' %}">Home</a>
   <button class="primaryAction btn btn-black rounded-1 text-off-white" type="submit">{% trans "Sign In" %}</button>
   <p class="mt-2">
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <a class="button secondaryAction text-dark" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   </p>
 </form>
 

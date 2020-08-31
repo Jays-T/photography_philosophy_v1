@@ -15,14 +15,30 @@ body {
     overflow-y: auto;
 }
 
-
-
 .main-nav-margin-left {
     margin-left: 10.1vw;
 }
 
 .main-nav-margin-right {
     margin-right: 9.6vw;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgba(135, 145, 145, 0.98);
+    z-index: -1;
+}
+
+.top-margin {
+    margin-top: 24vh;
+}
+
+.top-padding-index-navbar {
+    padding-top: 50vh;
 }
 
 .row {
@@ -147,13 +163,13 @@ li .dropdown-item:hover,
 }
 
 
-input:hover,
+/* input:hover,
 input:active,
 input:focus,
 input::after {
     background: rgba(216, 221, 221, 0.2)!important;
     color: #faebd7 !important;
-}
+} */
 
 .free-shipping-alert {
     background: #17a2b8 !important;
@@ -162,8 +178,6 @@ input::after {
 .nav-item .active {
     text-decoration: underline;
 }
-
-
 
 .border-black {
     border: 1px solid black !important;
@@ -192,24 +206,6 @@ input::after {
 
 .bg-none {
     background: none;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: rgba(135, 145, 145, 0.98);
-    z-index: -1;
-}
-
-.top-margin {
-    margin-top: 22vh;
-}
-
-.top-padding-index-navbar {
-    padding-top: 50vh;
 }
 
 .scroll-up-button {
@@ -254,21 +250,27 @@ input::after {
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
-    position: fixed;
-    top: 20vh;
-    right: 12vw;
+    position: absolute;
+    left: 43%;
+    top: 22vh;
     z-index: 99999999999;
     animation-name: fadeIn;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
+    animation-duration: 4.8s;
+    animation-fill-mode: both;
 }
 
 @keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    100% {
+    20% {
         opacity: 1;
+    }
+    58% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
@@ -371,6 +373,10 @@ input::after {
         font-size: 16px;
     }
 
+    .top-margin {
+    margin-top: 18vh;
+    }
+
     .show-on-mobile {
     margin: 0;
     display: block;
@@ -391,6 +397,10 @@ input::after {
     .nav-item {
         font-size: 0.75em;
     }
+
+    .bg-transparent {
+    background: rgba(15, 40, 48, .95) !important;
+}
 }
 
 @media (max-width: 440px) {

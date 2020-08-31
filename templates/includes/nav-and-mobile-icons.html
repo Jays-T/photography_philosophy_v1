@@ -12,7 +12,7 @@
                 <ul
                   class="nav-ul list-inline list-unstyled text-center my-0 float-right main-nav-margin-right"
                 >
-                  <li class="list-inline-item">
+                  <li class="list-inline-item m-0">
                     <a
                       class="text-off-white nav-link"
                       href="#"
@@ -23,7 +23,7 @@
                     >
                       <div class="text-center">
                         <div><i class="fas fa-search fa-lg"></i></div>
-                        <p class="my-0">Search</p>
+                        <p class="hide-on-mobile my-0">Search</p>
                       </div>
                     </a>
                     <div
@@ -44,10 +44,10 @@
                           />
                           <div class="input-group-append">
                             <button
-                              class="form-control form-control btn btn-black border border-black rounded-1"
+                              class="form-control form-control btn btn-black border border-black text-dark rounded-1"
                               type="submit"
                             >
-                              <span class="icon">
+                              <span class="icon text-off-white">
                                 <i class="fas fa-search"></i>
                               </span>
                             </button>
@@ -56,7 +56,7 @@
                       </form>
                     </div>
                   </li>
-                  <li class="list-inline-item dropdown">
+                  <li class="list-inline-item m-0 dropdown">
                     <a
                       class="text-off-white nav-link"
                       href="#"
@@ -67,13 +67,20 @@
                     >
                       <div class="text-center">
                         {% if request.user.is_authenticated %}
-                        <div><i class="fas fa-user fa-lg"></i></div>
+                        <div class="hide-on-mobile">
                         <p class="p-2 my-0 nav-edge-glow rounded-border">
-                          LoggedIn
+                        <span class="d-block"><i class="fas fa-user fa-md"></i></span>
+                        <span class="d-block">{{ user.username|truncatechars:8 }}</span>
                         </p>
+                        </div>
+                        <div class="show-on-mobile">
+                        <p class="p-2 my-0 nav-edge-glow rounded-border">
+                          <i class="fas fa-user fa-lg pr-2"></i>{{ user.username|truncatechars:6 }}
+                        </p>
+                        </div>
                         {% else %}
                         <i class="fas fa-user fa-lg"></i>
-                        <p class="my-0">Account</p>
+                        <p class="hide-on-mobile my-0">Account</p>
                       </div>
                       {% endif %}
                     </a>
@@ -101,14 +108,18 @@
                       {% endif %}
                     </div>
                   </li>
-                  <li class="list-inline-item">
+                  <li class="list-inline-item m-0">
                     <a
                       class="{% if grand_total %}text-info font-weight-bold{% else %}text-off-white{% endif %} nav-link"
                       href="{% url 'view_cart' %}"
                     >
                       <div class="text-center">
+                        <p class="show-on-mobile my-0">
+                          {% if grand_total %} ${{ grand_total|floatformat:2 }}
+                          {% else %} $0.00 {% endif %}
+                        </p>
                         <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                        <p class="my-0">
+                        <p class="hide-on-mobile my-0">
                           {% if grand_total %} ${{ grand_total|floatformat:2 }}
                           {% else %} $0.00 {% endif %}
                         </p>
