@@ -9,7 +9,6 @@
   * <a href="#User-Goals">User Goals</a>
   * <a href="#User-Stories">User Stories</a>
   * <a href="#My-Strategy">Strategy</a>
-  * <a href="#Structure">Structure</a>
 * <a href="#User-Interface">UI</a>
 * <a href="#Features">Features</a>
 * <a href="#Scope">Scope</a>
@@ -75,10 +74,6 @@
 * Some of the work I had done on the seperate branch was gone after this happened. 
 * I was able to recover the project because I was working on a seperate branch and while unfortunately I had to delete the database and re-add all the products
 * Most of the project was still there and safe in the Master branch.
-
-# Structure
-
-<img src="https://photography-philosophy.s3.eu-north-1.amazonaws.com/media/wireframes/L_C_Photography_DB_Schema.png"/>
 
 # User Interface
 
@@ -300,28 +295,114 @@ No further bugs were detected during testing
 * This project and all project files are hosted on GitHub via my GitHub repository at <a href="https://github.com/Jays-T/photography_philosophy_v1" target="_blank"></a>
 * I coded the project using GitPod as my development environment. 
 * This project is also hosted and deployed with Heroku
+
+## To run this application in a cloud-based environment, you can deploy the code to Heroku. This section assumes you have succeeded at running the application in your local environment first, as described above.
+
 * To deploy the project using Heroku
    1. Register an account at <a href="https://heroku.com" target="_blank">Heroku</a>
    2. Go to Heroku site, login and create a new app. Set a name for this app and select the closest region.
    3. In the Deploy tab of your App dashboard in Heroku, choose Deployment method. I chose Heroku Git, using Heroku CLI and logged in via the terminal using the command: heroku login
    4. In GitPod, create a requirements.txt file using the command pip3 freeze > requirements.txt in the terminal.
    5. Create a Procfile using the commant echo web: python app.py > Procfile in the terminal.
-   6. Login to Heroku via the terminal using command heroku login
-   7. Commit your changes using: git add and git commit -m "commit message here"
-   7. Push your changes using: git push heroku master
-   8. In your Heroku Dashboard, Go to the Settings of your app and then Reveal Config Vars and set the values as follows (remove the spaces and '<'>'from the MONGO_URI):
 
-   | KEY         | VALUE                                                                                         |
-   | :---        | :---                                                                                          |
-   | IP          | 0.0.0.0                                                                                       | 
-   | PORT        | 5000                                                                                          |
-   | MONGO_URI   | mongodb+srv://root:< your password >@cluster0-r5ils.mongodb.net/< your dbname >               |
-   |             | ?retryWrites=true&w=majority                                                                  |
-   | SECRET_KEY  | <your_secret_key>                                                                             |
+   Heroku deployment
+
+On the Resources tab, in the Add-ons field type Heroku Postgres select the Hobby Dev then click the Provision button.
+
+After setting the Postgress database in your Heroku Dashboard, go to the Settings of your app and then Reveal Config Vars and set the values as follows:
+
+(Copy the values from your env.py file and paste them into Heroku) 
+
+Key Value 
+
+AWS_ACCESS_KEY_ID <-> <your_value>
+
+AWS_SECRET_ACCESS_KEY <-> <your_value>
+
+DATABASE_URL <-> <your_value>
+
+EMAIL_HOST_PASS <-> <your_value>
+
+EMAIL_HOST_USER <-> <your_value>
+
+SECRET_KEY <-> <your_value>
+
+STRIPE_PUBLIC_KEY <-> <your_value>
+
+STRIPE_SECRET_KEY <-> <your_value>
+
+STRIPE_WH_SECRET <-> <your_value>
+
+DEVELOPMENT <-> False
+
+PRODUCTION <-> True
+
+USE_AWS <-> True
+
+Grab the DATABASE_URL link from Heroku's Config Vars as we gonna need it to migrate to the Heroku Postgres database.
+
+Back in your code editor terminal, go to settings.py in photography_philosophy and in the databases URL variable comment out the sqlite3 from django and paste in the url from Heroku
+Do NOT commit or push to github or heroku at this point.
+
+Now we're going to save the settings.py and in your terminal type
+
+* python3 manage.py makemigrations --dry-run
+
+check that all migrations show up properly then type:
+
+* python3 manage.py makemigrations 
+
+Now type into the terminal
+
+* python3 manage.py migrate --plan 
+
+Double check the migrations and then migrate
+
+* python3 manage.py migrate
+
+This should populate the heroku PostgreSQL database 
+
+Create the superuser for the postgres database so you can have access to the django admin.
+
+python manage.py createsuperuser
+Now we need to add the required data into the database in the following order:
+
+python manage.py loaddata categories
+python manage.py loaddata products
+
+Now go back to settings.py in photography_philosophy and for your database environment variables put this:
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+Save settings.py
+
+With everything set commit the changes, push to github and then:
+
+* Login to Heroku via the terminal using command heroku login
+* Push your changes using: git push heroku master
+
+From the Heroku dashboard of your newly created application, click on the "Deploy" tab, then scroll down to the "Deployment method" section and select GitHub.
+
+Use the GitHub link and type in the name of the repository and click the search button. Then connect the Heroku app to the desired GitHub repository.
+
+On the Deployment Tab, scroll a bit further down to the "Manual Deploy" section, select the master branch then click "Deploy Branch".
+
+Once your application is running, you may want to update the Deployment method from Manual to Automatic.
+
    
    9. From Heroku you can now click 'Open App'. If all steps were completed correctly the app should run successfully
-   10. You can also access your app using this url type:  https://<your app name>.herokuapp.com/<endpoint>
-
+   10. You can also access the app using this url type:  https://photography_philosophy.herokuapp.com/
+   11. You can access the admin with your superuser credentials via https://photography_philosophy.herokuapp.com/admin
 
 ## There are no differences between the currently deployed site and the development version at this time.
 
