@@ -10,10 +10,11 @@
       </div>
       <div class="modal-body">
         Are you sure you want to delete <span class="badge p-2">{{ product.name }}?</span>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
-        <button href="{% url 'delete_product' product.id %}" type="button" class="btn btn-danger">Yes <i class="far fa-trash-alt fa-lg"></i></button>
+        <a href="{% url 'delete_product' product.id %}" type="button" class="btn btn-danger">Yes <i class="far fa-trash-alt fa-lg"></i></a>
       </div>
     </div>
   </div>
