@@ -344,13 +344,6 @@ li .dropdown-item:hover,
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
 
     .header-container {
         padding-top: 72px;
@@ -391,12 +384,16 @@ li .dropdown-item:hover,
     }
 }
 
-@media (max-width: 764px) {
+@media (max-width: 768px) {
     nav li p,
     .logo-size,
     .nav-item {
         font-size: 0.75em;
     }
+
+    .top-padding-index-navbar {
+    padding-top: 0vh;
+}
 
     .bg-transparent {
     background: rgba(15, 40, 48, .95) !important;

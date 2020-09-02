@@ -21,8 +21,6 @@
 * <a href="#Deployment">Deployment</a>
 * <a href="#Credits">Credits</a>
 
-<img src="/wireframes/responsive-900x544.png"/>
-
 # **UX**
 
 # Owner Goals
@@ -43,37 +41,37 @@
 2. "As a **Random User** I want to understand as fast as possible what this site can offer me"
 3. "As a **Fan of the Site Owner** I want to browse his collection of photos and possibly purchase a print or two"
 4. "As a user I want to have:
-..* Non-login checkout
-..* To see my items in my basket
-..* To be able to search the site
-..* I want to have a smooth buying experience
-..* I want to be notified about my actions while on the site
-..* I want to clearly see how much I'm spending
-..* I want to be informed of any possible shippping costs 
-..* I would like to be able to register an account
-..* I want to be able to save my shipping address for future use
+* Non-login checkout
+* To see my items in my basket
+* To be able to search the site
+* I want to have a smooth buying experience
+* I want to be notified about my actions while on the site
+* I want to clearly see how much I'm spending
+* I want to be informed of any possible shippping costs 
+* I would like to be able to register an account
+* I want to be able to save my shipping address for future use
 
 
 
 # My Strategy
 
-* For this project I focussed primarily on the backend. This involved a lot of learning as the project developed.
-* I did some initial wireframes for the landing page and how I wanted to setup the products display.
-* I planned on using a simple card scheme that I had seen used on other sites as well as the Boutique Ado project from Code Institute
-* I relied heavily on the Boutique Ado project while developing this project. I found that many times the reason that my code wasn't working
-* was due to a small typo, or forgetting to add a path to the urls.py etc. 
+For this project I focussed primarily on the backend. This involved a lot of learning as the project developed.
+I did some initial wireframes for the landing page and how I wanted to setup the products display.
+I planned on using a simple card scheme that I had seen used on other sites as well as the Boutique Ado project from Code Institute
+I relied heavily on the Boutique Ado project while developing this project. I found that many times the reason that my code wasn't working
+was due to a small typo, or forgetting to add a path to the urls.py etc. 
 
-* While the backend was my priority I did not want to skimp on the front end either, though in the end perhaps the admin_hub didn't quite realise
-* the full scope of what I had hoped to present with this project.
+While the backend was my priority I did not want to skimp on the front end either, though in the end perhaps the admin_hub didn't quite realise
+the full scope of what I had hoped to present with this project.
 
-## Seperate Branches 
+## Separate Branches 
 
-* Midway through the project I received feedback on my previous milestone with this excellent suggestion: "The next step of progress should be using separate branches for each feature implemented."
-* I realised that I had already implemented quite a few features, but I began using seperate branches for each feature straight away.
-* Using seperate branches saved me when about 70% through the project I was testing adding/deleting products in the Admin. I deleted one product and my database corrupted
-* Some of the work I had done on the seperate branch was gone after this happened. 
-* I was able to recover the project because I was working on a seperate branch and while unfortunately I had to delete the database and re-add all the products
-* Most of the project was still there and safe in the Master branch.
+Midway through the project I received feedback on my previous milestone with this excellent suggestion: "The next step of progress should be using separate branches for each feature implemented."
+I realised that I had already implemented quite a few features, but I began using seperate branches for each feature straight away.
+Using separate branches saved me when about 70% through the project I was testing adding/deleting products in the Admin. I deleted one product and my database corrupted
+Some of the work I had done on the separate branch was gone after this happened. 
+I was able to recover the project because I was working on a separate branch and while unfortunately I had to delete the database and re-add all the products
+most of the project was still there and safe in the Master branch.
 
 # User Interface
 
@@ -147,10 +145,10 @@ Regular User
 
 # Features still to implement
 
-- [ ] Show notification to user on successful email sent to owner
+- [ ] Show notification to user on successful email sent to owner 
 - [ ] Wire up the email app to get the UserProfile email address and populate the form with the email automatically
-- [ ] Be able to rate items
-- [ ] Be able to leave reviews on items purchased
+- [ ] Users to be able to rate items
+- [ ] Users to be able to leave reviews on items purchased
 
 
 
@@ -211,27 +209,28 @@ Also the Add/Edit/Delete functions are only available to SuperUsers. A SuperUser
 
 ## Technologies installed
 
-asgiref==3.2.10
-boto3==1.14.51
-botocore==1.17.51
-dj-database-url==0.5.0
-Django==3.0.8
-django-allauth==0.42.0  -> For User Authentication
-django-countries==6.1.3  -> For Country Selector on Forms
-django-crispy-forms==1.9.2  -> For Forms
-django-storages==1.9.1  
-docutils==0.15.2
-gunicorn==20.0.4  -> To setup application for deployment to Heroku
-jmespath==0.10.0
-oauthlib==3.1.0
-Pillow==7.2.0
-psycopg2-binary==2.8.5
-python3-openid==3.2.0
-pytz==2020.1
-requests-oauthlib==1.3.0
-s3transfer==0.3.3
-sqlparse==0.3.1   -> Parse/Format/Split sql statements
-stripe==2.50.0  ->  Stripe Payments
+stripe==2.50.0  
+- [x] asgiref==3.2.10
+- [x] boto3==1.14.51
+- [x] botocore==1.17.51
+- [x] dj-database-url==0.5.0
+- [x] Django==3.0.8
+- [x] django-allauth==0.42.0  -> For User Authentication
+- [x] django-countries==6.1.3  -> For Country Selector on Forms
+- [x] django-crispy-forms==1.9.2  -> For Form Rendering
+- [x] django-storages==1.9.1
+- [x] docutils==0.15.2
+- [x] gunicorn==20.0.4  -> To setup application for deployment to Heroku
+- [x] jmespath==0.10.0
+- [x] oauthlib==3.1.0
+- [x] Pillow==7.2.0
+- [x] psycopg2-binary==2.8.5
+- [x] python3-openid==3.2.0
+- [x] pytz==2020.1
+- [x] requests-oauthlib==1.3.0
+- [x] s3transfer==0.3.3
+- [x] sqlparse==0.3.1   -> Parse/Format/Split sql statements
+- [x] stripe==2.50.0  ->  Stripe Payments
 
 # Sources
 
@@ -285,10 +284,9 @@ Phones tested:
 # Bugs
 
 **Major Bugs**
-* There was a major bug with the delete product function which caused all the products to be deleted instead of only one.
-* This bug was caught during testing and has been removed/fixed.
 
-No further bugs were detected during testing 
+* There was a major bug with the delete product function which caused all the products to be deleted instead of only one.
+* This bug was caught during testing and has been removed/fixed. 
 
 # Deployment
 
@@ -296,55 +294,46 @@ No further bugs were detected during testing
 * I coded the project using GitPod as my development environment. 
 * This project is also hosted and deployed with Heroku
 
-## To run this application in a cloud-based environment, you can deploy the code to Heroku. This section assumes you have succeeded at running the application in your local environment first, as described above.
+## To run this application in a cloud-based environment, you can deploy the code to Heroku. This section assumes you have succeeded at running the application in your local environment first. This section also assumes that you have setup AWS to host your static + media files
 
 * To deploy the project using Heroku
    1. Register an account at <a href="https://heroku.com" target="_blank">Heroku</a>
    2. Go to Heroku site, login and create a new app. Set a name for this app and select the closest region.
-   3. In the Deploy tab of your App dashboard in Heroku, choose Deployment method. I chose Heroku Git, using Heroku CLI and logged in via the terminal using the command: heroku login
-   4. In GitPod, create a requirements.txt file using the command pip3 freeze > requirements.txt in the terminal.
-   5. Create a Procfile using the commant echo web: python app.py > Procfile in the terminal.
+   3. In the Deploy tab of your App dashboard in Heroku, choose Deployment method. I chose GitHub.
+   4. In GitPod you'll need to install:
+         dj_database_url, and psycopg2 in order to use Postgres from Heroku/ 
+         and Gunicorn to act as a webserver
+   5. Now create a requirements.txt file using the command pip3 freeze > requirements.txt in the terminal.
+   6. Create a Procfile and put this into the Procfile:  web: gunicorn photography_philosophy.wsgi:application
+7. On the Resources tab, in the Add-ons field type Heroku Postgres select the Hobby Dev then click the Provision button.
 
-   Heroku deployment
-
-On the Resources tab, in the Add-ons field type Heroku Postgres select the Hobby Dev then click the Provision button.
-
-After setting the Postgress database in your Heroku Dashboard, go to the Settings of your app and then Reveal Config Vars and set the values as follows:
+8. After setting the Postgress database in your Heroku Dashboard, go to the Settings of your app and then Reveal Config Vars and set the values as follows:
 
 (Copy the values from your env.py file and paste them into Heroku) 
 
-Key Value 
+| Key | Value |
+| --- | ------ |
+| AWS_ACCESS_KEY_ID  |  <your_value> |
+| AWS_SECRET_ACCESS_KEY  |  <your_value> |
+| DATABASE_URL  |  <your_value> |
+| EMAIL_HOST_PASS  |  <your_value> |
+| EMAIL_HOST_USER  |  <your_value> |
+| SECRET_KEY  |  <your_value> |
+| STRIPE_PUBLIC_KEY  |  <your_value> |
+| STRIPE_SECRET_KEY  |  <your_value> |
+| STRIPE_WH_SECRET  |  <your_value> |
+| DEVELOPMENT  |  False |
+| PRODUCTION  |  True |
+| USE_AWS  |  True |
 
-AWS_ACCESS_KEY_ID <-> <your_value>
+9. Set heroku to not collect the static files with command: Heroku config:set DISABLE_COLLECTSTATIC = 1 --app <your_app_name>
+   Now Grab the DATABASE_URL link from Heroku's Config Vars as we gonna need it to migrate to the Heroku Postgres database.
 
-AWS_SECRET_ACCESS_KEY <-> <your_value>
+10. Back in your code editor terminal, go to settings.py in photography_philosophy and in the databases URL variable comment out the sqlite3 from django and 
+replace the default database with a call to dj_database_url.parse and give it the database URL from Heroku.
+## Do NOT commit or push to github or heroku at this point.
 
-DATABASE_URL <-> <your_value>
-
-EMAIL_HOST_PASS <-> <your_value>
-
-EMAIL_HOST_USER <-> <your_value>
-
-SECRET_KEY <-> <your_value>
-
-STRIPE_PUBLIC_KEY <-> <your_value>
-
-STRIPE_SECRET_KEY <-> <your_value>
-
-STRIPE_WH_SECRET <-> <your_value>
-
-DEVELOPMENT <-> False
-
-PRODUCTION <-> True
-
-USE_AWS <-> True
-
-Grab the DATABASE_URL link from Heroku's Config Vars as we gonna need it to migrate to the Heroku Postgres database.
-
-Back in your code editor terminal, go to settings.py in photography_philosophy and in the databases URL variable comment out the sqlite3 from django and paste in the url from Heroku
-Do NOT commit or push to github or heroku at this point.
-
-Now we're going to save the settings.py and in your terminal type
+11. Now we're going to save the settings.py and in your terminal type
 
 * python3 manage.py makemigrations --dry-run
 
@@ -364,13 +353,15 @@ This should populate the heroku PostgreSQL database
 
 Create the superuser for the postgres database so you can have access to the django admin.
 
-python manage.py createsuperuser
-Now we need to add the required data into the database in the following order:
+* python3 manage.py createsuperuser
 
-python manage.py loaddata categories
-python manage.py loaddata products
+Now we need to add the required data into the database 
+## Must be done only in the following order:
 
-Now go back to settings.py in photography_philosophy and for your database environment variables put this:
+* python3 manage.py loaddata categories
+* python3 manage.py loaddata products
+
+12. Now go back to settings.py in photography_philosophy and for your database environment variables put this:
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
@@ -388,9 +379,6 @@ Save settings.py
 
 With everything set commit the changes, push to github and then:
 
-* Login to Heroku via the terminal using command heroku login
-* Push your changes using: git push heroku master
-
 From the Heroku dashboard of your newly created application, click on the "Deploy" tab, then scroll down to the "Deployment method" section and select GitHub.
 
 Use the GitHub link and type in the name of the repository and click the search button. Then connect the Heroku app to the desired GitHub repository.
@@ -400,10 +388,14 @@ On the Deployment Tab, scroll a bit further down to the "Manual Deploy" section,
 Once your application is running, you may want to update the Deployment method from Manual to Automatic.
 
    
-   9. From Heroku you can now click 'Open App'. If all steps were completed correctly the app should run successfully
-   10. You can also access the app using this url type:  https://photography_philosophy.herokuapp.com/
-   11. You can access the admin with your superuser credentials via https://photography_philosophy.herokuapp.com/admin
+   13. From Heroku you can now click 'Open App'. If all steps were completed correctly the app should run successfully
+   14. You can also access the app using this url type:  https://photography_philosophy.herokuapp.com/
+   15. You can access the admin with your superuser credentials via https://photography_philosophy.herokuapp.com/admin
+   16. To test SuperUser options use:
 
+| User: | Password: |
+| --- | --- |
+| Super | 3RwWn5YDcF5RkTv |
 ## There are no differences between the currently deployed site and the development version at this time.
 
 ## To run the project locally

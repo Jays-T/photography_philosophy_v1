@@ -39,7 +39,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="addNew">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-100 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#collapseOne" 
                               aria-expanded="true" 
@@ -74,7 +74,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="editProduct">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-100 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#collapseTwo"
                               aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
@@ -109,7 +109,7 @@
                   <div class="card nav-edge-glow mb-2">
                      <div class="card-header" id="editInstruct">
                         <h5 class="mb-0">
-                           <button class="btn btn-outline-black w-25 rounded-1 collapsed" 
+                           <button class="btn btn-outline-black w-100 rounded-1 collapsed" 
                               data-toggle="collapse" 
                               data-target="#instruct"
                               aria-expanded="{% if '/edit/' in request.path %}true{% else %}false{% endif %}" 
@@ -175,7 +175,7 @@
                     </a>
                     </div>
                     <div class="col-6">
-                    <a class="btn btn-danger w-100 remove-item mt-2" data-toggle="modal" data-target="#confirmDeleteModal"
+                    <a class="btn btn-danger w-100 remove-item mt-2" data-toggle="modal" data-target="#confirmDeleteModal{{product.id}}"
                         >
 						<span class="p-2 mt-2 w-100 text-black rounded-1">  
 						<i class="far fa-trash-alt fa-lg"></i>
@@ -183,6 +183,7 @@
 					</a>
                     </div>
                     </div>
+                    <!-- Modal -->
                     {% include 'includes/confirm_delete_modal.html' %}
                 <hr class="my-0 mt-1 mb-1">
                 {% endfor %}
