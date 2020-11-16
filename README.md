@@ -2,7 +2,7 @@
 
 * This project in its current state is purely for educational purposes.
 ## Layout Issues
-* There are some layout issues which will be addressed in the next update of the project. For example: Issues with the navbar, specifically on the landing page, not being set in place(sticky), some spacing and padding issues throughout the site, the large gap between the navbar and site content. Many of these layout issues were not properly addressed in the final rush to submit the project by the hard deadline (This is my submission for the Milestone 4 at Code Institute's Fullstack Developer course). 
+* There are some layout issues which will be addressed in the next update of the project. For example: Issues with the navbar, specifically on the landing page, not being set in place(sticky), some spacing and padding issues throughout the site, the large gap between the navbar and site content etc. Many of these layout issues were not properly addressed in the final rush to submit the project by the hard deadline (This is my submission for the Milestone 4 at Code Institute's Fullstack Developer course). 
 
 # CONTENTS
 
